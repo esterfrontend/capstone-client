@@ -10,10 +10,10 @@ const Navbar = () => {
             text: 'Yo actúo',
             link: '/'
         },
-        {
-            text: 'Cómo funciona',
-            link: '/'
-        },
+        // {
+        //     text: 'Cómo funciona',
+        //     link: '/'
+        // },
         {
             text: 'Colegios',
             link: '/'

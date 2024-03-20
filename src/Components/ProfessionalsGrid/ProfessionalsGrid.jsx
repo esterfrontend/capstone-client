@@ -1,10 +1,6 @@
 import { Grid } from "@chakra-ui/react"
 
 const ProfessionalsGrid = ({ professionals }) => {
-  const handleLike = (e) => {
-    e.preventDefault()
-  }
-
   return (
     <Grid
       templateColumns={[

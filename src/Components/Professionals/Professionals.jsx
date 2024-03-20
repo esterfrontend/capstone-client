@@ -1,9 +1,9 @@
 import { useState } from 'react'
-import professionalsJson from '../../mockProfessionals.json'
+import PROFESSIONALS_MOCK from '../../const/mockProfessionals.json'
 import ProfessionalsGrid from '../ProfessionalsGrid/ProfessionalsGrid'
 
 const Professionals = () => {
-    const [professionals, setProfessionals] = useState(professionalsJson)
+    const [professionals, setProfessionals] = useState(PROFESSIONALS_MOCK)
 
     return (
         <>
