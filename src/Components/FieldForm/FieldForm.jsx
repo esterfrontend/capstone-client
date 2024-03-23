@@ -3,6 +3,7 @@ import TextareaField from '../TextareaField/TextareaField';
 import SelectField from '../SelectField/SelectField';
 import CheckboxField from '../CheckboxField/CheckboxField';
 import RadioButtonField from '../RadioButtonField/RadioButtonField';
+import PasswordField from '../PasswordField/PasswordField';
 
 const FieldForm = ({input, options}) => {
     switch(input.type) {
@@ -11,6 +12,12 @@ const FieldForm = ({input, options}) => {
 
         case 'text':
             return <InputField name={input.name} placeholder={input.placeholder} />
+
+        case 'email':
+            return <InputField type={'email'} name={input.name} placeholder={input.placeholder} />
+
+        case 'phone':
+            return <InputField type={'tel'} name={input.name} placeholder={input.placeholder} />
 
         case 'textarea':
             return <TextareaField name={input.name} placeholder={input.placeholder} />
@@ -21,8 +28,11 @@ const FieldForm = ({input, options}) => {
         case 'radiobutton':
             return <RadioButtonField options={options} name={input.name} placeholder={input.placeholder} />
 
+        case 'password':
+            return <PasswordField name={input.name} placeholder={input.placeholder} />
+            
         default:
-            return <p>Default</p>
+            return <InputField name={input.name} placeholder={input.placeholder} />
     }
 }
 

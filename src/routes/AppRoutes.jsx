@@ -6,6 +6,10 @@ import SchoolsPage from "../pages/SchoolsPage/SchoolsPage";
 import LoaderSchoolsPage from "../pages/SchoolsPage/LoaderSchoolsPage";
 import ProfessionalsPage from "../pages/ProfessionalsPage/ProfessionalsPage";
 import LoaderProfessionalsPage from "../pages/ProfessionalsPage/LoaderProfessionalsPage";
+import LoginPage from "../pages/LoginPage/LoginPage";
+import SignupPage from "../pages/SignupPage/SignupPage";
+import ProfilePage from "../pages/ProfilePage/ProfilePage";
+import CaseDetailsPage from "../pages/CaseDetailsPage/CaseDetailsPage";
 
 const AppRoutes = () => {
     const router = createBrowserRouter([
@@ -17,6 +21,22 @@ const AppRoutes = () => {
                     path: '/',
                     element: <HomePage />
                 },
+                {
+                    path: "/inicio-sesion",
+                    element: <LoginPage />,
+                },
+                {
+                    path: "/registrarse",
+                    element: <SignupPage />,
+                },
+                // {
+                //     path: "/mi-perfil",
+                //     element: (
+                //         <AuthMiddleware>
+                //             <ProfilePage />
+                //         </AuthMiddleware>
+                //     ),
+                // },
                 {
                     path: "/nuevo-caso",
                     element: <CreateCasePage />,
@@ -31,6 +51,10 @@ const AppRoutes = () => {
                     element: <ProfessionalsPage/>,
                     loader: LoaderProfessionalsPage
                 },
+                {
+                    path: "/casos/caso",
+                    element: <CaseDetailsPage />,
+                }
             ]
         }
     ])

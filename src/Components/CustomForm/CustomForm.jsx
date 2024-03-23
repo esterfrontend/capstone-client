@@ -1,15 +1,16 @@
 import { Box, Flex } from "@chakra-ui/react"
+import SubmitButton from "../SubmitButton/SubmitButton"
 
-const CustomForm = ({onSubmit, children}) => {
-
+const CustomForm = ({buttonText, onSubmit, children, ...props}) => {
     return (
-        <Flex>
+        <Box {...props}>
             <Box textAlign={'center'}>
-                <form onSubmit={onSubmit}>
+                <Flex as='form' onSubmit={onSubmit} direction={'column'} gap={'20px'} alignItems={'center'}>
                     {children}
-                </form>
+                    <SubmitButton text={buttonText} type="submit"/>
+                </Flex>
             </Box>
-        </Flex>
+        </Box>
     )
 }
 

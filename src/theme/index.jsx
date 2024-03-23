@@ -1,21 +1,15 @@
 import { extendTheme } from "@chakra-ui/react"
-
-const colors = {
-  brand: {
-    primary: '#58928B',
-    pink: '#FDE1D8',
-    black: '#3C3C3C',
-    primaryLight: '#bed6d3',
-    pinkLight: '#FEEDE7',
-    pinkUltraLight: '#FFF9F7',
-  }
-}
+import Button from './components/button'
+import colors from './colors'
 
 export const theme = extendTheme({
   colors,
   fonts: {
     heading: `'Oswald', sans-serif`,
     body: `'Poppins', sans-serif`,
+  },
+  components: {
+    Button,
   },
   styles: {
     global: {

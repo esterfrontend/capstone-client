@@ -44,8 +44,8 @@ const Navbar = () => {
             </Flex>
 
             <Flex gap={'10px'} textAlign={'center'}>
-                <AuthLink to={"/login"}>Iniciar sesión</AuthLink>
-                <AuthLink to={"/signup"}>Registrarse</AuthLink>
+                <AuthLink to={"/inicio-sesion"}>Iniciar sesión</AuthLink>
+                <AuthLink to={"/registrarse"}>Registrarse</AuthLink>
             </Flex>
         </Flex>
     )

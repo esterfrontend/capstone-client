@@ -5,9 +5,9 @@ import FieldForm from '../FieldForm/FieldForm';
 // import { useEffect, useState } from 'react';
 import CASE_INPUTS from '../../const/caseInputs'
 
-const CreateCaseForm = () => {
+const CreateCaseForm = ({onSubmit}) => {
     return ( <>
-        <CustomForm>
+        <CustomForm onSubmit={onSubmit} buttonText="Enviar" maxW={'1000px'} margin={'0 auto'}>
             { CASE_INPUTS.map((input, index) => {
                 return (
                     <Box padding={'30px'} key={index}>
