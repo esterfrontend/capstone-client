@@ -1,8 +1,7 @@
 import PageWrapper from "../../Components/PageWrapper/PageWrapper";
 import { useState } from 'react'
-import CASE_MOCK from '../../const/mockCase.json'
-import { Box, Flex, Heading, Image } from "@chakra-ui/react";
-import professionalImage from '../../resources/user-professional.svg'
+import CASE_MOCK from '../../mocks/mockCase.json'
+import { Flex } from "@chakra-ui/react";
 import GoBackLink from "../../Components/GoBackLink/GoBackLink";
 import CaseDetails from "../../Components/CaseDetails/CaseDetails";
 import RelatedUser from "../../Components/RelatedUser/RelatedUser";
@@ -12,7 +11,7 @@ function CaseDetailsPage() {
     const [caseDetails, setcaseDetails] = useState(CASE_MOCK)
 
     return (
-        <PageWrapper className="container" marginTop={'50px'}>
+        <PageWrapper className="container" marginTop={'20px'}>
 
             <GoBackLink to="/" />
 

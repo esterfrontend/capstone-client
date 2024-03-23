@@ -8,7 +8,7 @@ const Navbar = () => {
     const NAVIGATION = [
         {
             text: 'Yo actúo',
-            link: '/'
+            link: '/crear-un-aviso'
         },
         // {
         //     text: 'Cómo funciona',
@@ -25,7 +25,7 @@ const Navbar = () => {
     ]
 
     return (
-        <Flex as={"header"} className='container' paddingTop={'30px'} alignItems={'center'} justifyContent={'space-between'} position={'relative'}>
+        <Flex as={"header"} className='container' paddingTop={'30px'} paddingBottom={'30px'} alignItems={'center'} justifyContent={'space-between'} position={'relative'}>
             <Link to='/'>
                 <Logo />
             </Link>

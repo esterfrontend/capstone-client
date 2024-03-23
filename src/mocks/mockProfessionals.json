@@ -1,0 +1,50 @@
+[
+    {
+        "_id": "65fd9f8b03a70bdfa70f6b06",
+        "email": "profesional2@gmail.com",
+        "password": {
+            "salt": "d6433b42173f876e6d267b2c2dd74e390bb6dc1739caaafbe1501cce6c6c8966",
+            "hash": "77c30f8fb5d0c6bcab18dcb441b29ef2008b0b2478cf10384fe1db098518ea3466c35dceaeece280cc5f8214b72f3be742c142c962e4e9bc80196be38b7d88aa"
+        },
+        "role": "profesional",
+        "name": "Antonio Fraca Puerto",
+        "registrationNumber": "TG378",
+        "address": "C/ Inventada, 1",
+        "postalCode": 50010,
+        "province": "Zaragoza",
+        "phone": 622555444,
+        "schools": [],
+        "cases": [
+            "65fdc0e37805c6e2a0274d0a"
+        ],
+        "createdAt": {
+            "$date": "2024-03-22T15:11:07.771Z"
+        },
+        "updatedAt": {
+            "$date": "2024-03-22T17:33:23.229Z"
+        }
+    },
+    {
+        "_id": "65feb42a9965ce086be7d771",
+        "email": "profesional1@gmail.com",
+        "password": {
+            "salt": "a7d6e4338115fd2a6ec032644dd0767ee09988a41d73873d38bfb7a771e2f74b",
+            "hash": "4b7b982159d82b14fad23a1733a4f6abe61fa72f56fe76686f5d01595b2383ff1a30a6ee21226909251623cdf7ea2978a755e8858262190888c9f933eb585ff8"
+        },
+        "role": "profesional",
+        "name": "Juan Lanuza Marzo",
+        "registrationNumber": "UB268",
+        "address": "C/ Psicólogo, 1",
+        "postalCode": 50004,
+        "province": "Zaragoza",
+        "phone": 655427926,
+        "schools": "65feb46b9965ce086be7d775",
+        "cases": [],
+        "createdAt": {
+            "$date": "2024-03-23T10:51:22.395Z"
+        },
+        "updatedAt": {
+            "$date": "2024-03-23T10:52:27.516Z"
+        }
+    }
+]

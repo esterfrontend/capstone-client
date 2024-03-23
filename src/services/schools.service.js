@@ -6,7 +6,7 @@ class SchoolService extends AxiosConfig {
     }
 
     async getAllSchools() {
-        const response = this.axios.get('/')
+        const response = this.axios.get('/schools/getAll')
         return response.data
     }
 }
