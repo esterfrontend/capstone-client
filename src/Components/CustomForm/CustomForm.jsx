@@ -1,4 +1,4 @@
-import { Box, Flex, Input, Text } from "@chakra-ui/react"
+import { Box, Flex } from "@chakra-ui/react"
 
 const CustomForm = ({onSubmit, children}) => {
 

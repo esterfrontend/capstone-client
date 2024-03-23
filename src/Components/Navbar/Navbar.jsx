@@ -16,11 +16,11 @@ const Navbar = () => {
         // },
         {
             text: 'Colegios',
-            link: '/'
+            link: '/colegios'
         },
         {
             text: 'Psicólogos',
-            link: '/'
+            link: '/psicologos'
         }
     ]
 

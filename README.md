@@ -36,8 +36,8 @@ npm install
 |  /nuevo-caso               |  Create new case          |     ✅      |
 |  /colegios                 |  Affiliated schools       |     ✅      |
 |  /colegios/:id             |  One school               |     ✅      |
-|  /profesionales            |  Professionals            |     ✅      |
-|  /profesionales/:id        |  One professional         |     ✅      |
+|  /psicologos               |  Professionals            |     ✅      |
+|  /psicologos/:id           |  One professional         |     ✅      |
 |  /inicio-sesion            |  Login                    |     ❌      |
 |  /registro                 |  Signup                   |     ❌      |
 |  /mi-perfil                |  Profile                  |     ❌      |

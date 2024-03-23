@@ -5,6 +5,7 @@ const colors = {
     primary: '#58928B',
     pink: '#FDE1D8',
     black: '#3C3C3C',
+    primaryLight: '#bed6d3',
     pinkLight: '#FEEDE7',
     pinkUltraLight: '#FFF9F7',
   }

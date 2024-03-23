@@ -2,7 +2,10 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom"
 import Layout from "../layouts/Layout";
 import HomePage from "../pages/HomePage/HomePage";
 import CreateCasePage from "../pages/CreateCasePage/CreateCasePage";
-import CaseDetailsPage from "../pages/CaseDetailsPage/CaseDetailsPage";
+import SchoolsPage from "../pages/SchoolsPage/SchoolsPage";
+import LoaderSchoolsPage from "../pages/SchoolsPage/LoaderSchoolsPage";
+import ProfessionalsPage from "../pages/ProfessionalsPage/ProfessionalsPage";
+import LoaderProfessionalsPage from "../pages/ProfessionalsPage/LoaderProfessionalsPage";
 
 const AppRoutes = () => {
     const router = createBrowserRouter([
@@ -19,8 +22,14 @@ const AppRoutes = () => {
                     element: <CreateCasePage />,
                 },
                 {
-                    path: "/casos/caso",
-                    element: <CaseDetailsPage />,
+                    path: "/colegios",
+                    element: <SchoolsPage />,
+                    loader: LoaderSchoolsPage
+                },
+                {
+                    path: "/psicologos",
+                    element: <ProfessionalsPage/>,
+                    loader: LoaderProfessionalsPage
                 },
             ]
         }

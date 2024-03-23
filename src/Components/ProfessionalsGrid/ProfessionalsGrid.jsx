@@ -1,8 +1,10 @@
 import { Grid } from "@chakra-ui/react"
+import ProfessionalCard from "../ProfessionalCard/ProfessionalCard"
 
 const ProfessionalsGrid = ({ professionals }) => {
   return (
-    <Grid
+    <Grid className="container"
+      marginTop={'50px'}
       templateColumns={[
         "repeat(1, 1fr)",
         "repeat(1, 1fr)",
@@ -11,11 +13,9 @@ const ProfessionalsGrid = ({ professionals }) => {
       ]}
       gap={"40px"}
     >
-      {professionals.map(({ name, surname }) => {
+      {professionals.map((professional, index) => {
         return (
-          <div>
-            <h2>{name}{surname}</h2>
-          </div>
+          <ProfessionalCard key={index} professional={professional}/>
         )
       })}
     </Grid>
