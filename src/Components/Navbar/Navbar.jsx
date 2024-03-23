@@ -8,7 +8,7 @@ const Navbar = () => {
     const NAVIGATION = [
         {
             text: 'Yo actúo',
-            link: '/crear-un-aviso'
+            link: '/nuevo-caso'
         },
         // {
         //     text: 'Cómo funciona',

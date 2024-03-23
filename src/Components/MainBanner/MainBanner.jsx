@@ -23,7 +23,7 @@ const MainBanner = () => {
                     <Text>Nuestra prioridad es la seguridad y el bienestar de todos, así que no te preocupes, si lo deseas, el aviso puede ser totalmente anónimo. Ni el colegio, ni los agresores, ni la víctima sabrá quién a dado el aviso.</Text>
                     <Text>El mundo cambia con tu ejemplo.</Text>
                 </Box>
-                <Button to='/crear-un-aviso'>Avísanos de un caso</Button>
+                <Button to='/nuevo-caso'>Avísanos de un caso</Button>
             </Box>
         </Flex>
     )

@@ -15,7 +15,7 @@ const AppRoutes = () => {
                     element: <HomePage />
                 },
                 {
-                    path: "/crear-un-aviso",
+                    path: "/nuevo-caso",
                     element: <CreateCasePage />,
                 },
                 {
