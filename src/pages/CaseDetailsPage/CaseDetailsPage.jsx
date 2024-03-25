@@ -13,7 +13,7 @@ function CaseDetailsPage() {
     return (
         <PageWrapper className="container" marginTop={'20px'}>
 
-            <GoBackLink to="/" />
+            <GoBackLink to="/mis-casos" />
 
             <Flex gap={'70px'}>
                 <CaseDetails

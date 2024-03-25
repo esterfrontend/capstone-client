@@ -2,7 +2,6 @@ import { Box, Text } from "@chakra-ui/react"
 import CustomLink from "../CustomLink/CustomLink"
 
 const ProfessionalCard = ({professional}) => {
-    console.log(professional)
     return (
         <Box 
             border={'2px solid'} 

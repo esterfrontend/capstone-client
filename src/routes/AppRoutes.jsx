@@ -9,7 +9,10 @@ import LoaderProfessionalsPage from "../pages/ProfessionalsPage/LoaderProfession
 import LoginPage from "../pages/LoginPage/LoginPage";
 import SignupPage from "../pages/SignupPage/SignupPage";
 import ProfilePage from "../pages/ProfilePage/ProfilePage";
+import LoaderCasesPage from "../pages/MyCasesPage/LoaderCasesPage";
 import CaseDetailsPage from "../pages/CaseDetailsPage/CaseDetailsPage";
+import AuthMiddleware from "../middlewares/AuthMiddleware";
+import MyCasesPage from "../pages/MyCasesPage/MyCasesPage";
 
 const AppRoutes = () => {
     const router = createBrowserRouter([
@@ -29,14 +32,6 @@ const AppRoutes = () => {
                     path: "/registrarse",
                     element: <SignupPage />,
                 },
-                // {
-                //     path: "/mi-perfil",
-                //     element: (
-                //         <AuthMiddleware>
-                //             <ProfilePage />
-                //         </AuthMiddleware>
-                //     ),
-                // },
                 {
                     path: "/nuevo-caso",
                     element: <CreateCasePage />,
@@ -52,8 +47,37 @@ const AppRoutes = () => {
                     loader: LoaderProfessionalsPage
                 },
                 {
-                    path: "/casos/caso",
-                    element: <CaseDetailsPage />,
+                    path: "/mi-perfil",
+                    element: (
+                        <AuthMiddleware>
+                            <ProfilePage />
+                        </AuthMiddleware>
+                    ),
+                },
+                {
+                    path: "/mis-casos",
+                    element: (
+                        <AuthMiddleware>
+                            <MyCasesPage />
+                        </AuthMiddleware>
+                    ),
+                    loader: LoaderCasesPage
+                },
+                {
+                    path: "/psicologo-asociado",
+                    element: (
+                        <AuthMiddleware>
+                            <ProfilePage />
+                        </AuthMiddleware>
+                    ),
+                },
+                {
+                    path: "/mis-casos/caso",
+                    element: (
+                        <AuthMiddleware>
+                            <CaseDetailsPage />
+                        </AuthMiddleware>
+                    ),
                 }
             ]
         }

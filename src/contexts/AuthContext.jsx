@@ -6,6 +6,7 @@ export const AuthContext = createContext()
 
 export const AuthProvider = ({ children }) => {
     const navigate = useNavigate()
+    
     const [user, setUser] = useState(null)
     const [isLoading, setIsLoading] = useState(true)
 
@@ -17,7 +18,7 @@ export const AuthProvider = ({ children }) => {
         return localStorage.getItem("token")
     }
 
-    const getUser = async () => {
+    const getProfile = async () => {
         try {
             const token = getToken()
             if (token) {
@@ -33,6 +34,7 @@ export const AuthProvider = ({ children }) => {
 
     const logout = (e) => {
         if (e) e.preventDefault()
+        console.log('He hecho logout')
         localStorage.removeItem("token")
         setUser(null)
         navigate("/inicio-sesion")
@@ -42,15 +44,15 @@ export const AuthProvider = ({ children }) => {
         try {
             const { token } = await authService.login(userData)
             setToken(token)
-            await getUser()
-            navigate("/mi-perfil")
+            await getProfile()
+            navigate("/")
         } catch (error) {
             console.log("Error ==> ", error)
         }
     }
 
     useEffect(() => {
-        getUser()
+        getProfile()
     }, [])
 
     return (

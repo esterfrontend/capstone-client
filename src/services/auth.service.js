@@ -16,13 +16,13 @@ class AuthService extends AxiosConfig {
     }
 
     async getProfile(token) {
-        const response = await this.axios.post("/getProfile",
-            {},
-            {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
-            }
+        const response = await this.axios.post("/auth/getProfile",
+        {},
+        {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        }
         )
         return response.data
     }

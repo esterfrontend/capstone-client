@@ -3,7 +3,6 @@ import Button from '../Button/Button';
 import img from '../../resources/main-illustration.svg'
 
 const MainBanner = () => {
-    console.log(img)
     return (
         <Flex className="container" 
             bgColor={'brand.pinkUltraLight'} 

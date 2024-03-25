@@ -1,8 +1,8 @@
 import { Radio, RadioGroup, Stack } from "@chakra-ui/react"
 
-const RadioButtonField = ({name, placeholder, options}) => {
+const RadioButtonField = ({onChange, name, placeholder, options}) => {
     return (
-        <RadioGroup colorScheme='gray' w={'fit-content'} margin={'0 auto'}
+        <RadioGroup onChange={onChange} colorScheme='gray' w={'fit-content'} margin={'0 auto'}
             name={name} 
             placeholder={placeholder} 
         >

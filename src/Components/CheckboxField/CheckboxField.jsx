@@ -1,8 +1,8 @@
 import { Checkbox, Box, Stack } from "@chakra-ui/react"
 
-const CheckboxField = ({name, placeholder, options}) => {
+const CheckboxField = ({onChange, name, placeholder, options}) => {
     return (
-        <Box colorScheme='gray' w={'fit-content'} margin={'0 auto'}
+        <Box onChange={onChange} colorScheme='gray' w={'fit-content'} margin={'0 auto'}
             name={name} 
             placeholder={placeholder}
         >

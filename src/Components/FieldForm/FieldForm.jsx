@@ -5,34 +5,34 @@ import CheckboxField from '../CheckboxField/CheckboxField';
 import RadioButtonField from '../RadioButtonField/RadioButtonField';
 import PasswordField from '../PasswordField/PasswordField';
 
-const FieldForm = ({input, options}) => {
+const FieldForm = ({input, options, ...props}) => {
     switch(input.type) {
         case 'select':
-            return <SelectField options={options} name={input.name} placeholder={input.placeholder} />
+            return <SelectField {...props} options={options} name={input.name} placeholder={input.placeholder} />
 
         case 'text':
-            return <InputField name={input.name} placeholder={input.placeholder} />
+            return <InputField {...props} name={input.name} placeholder={input.placeholder} />
 
         case 'email':
-            return <InputField type={'email'} name={input.name} placeholder={input.placeholder} />
+            return <InputField {...props} type={'email'} name={input.name} placeholder={input.placeholder} />
 
         case 'phone':
-            return <InputField type={'tel'} name={input.name} placeholder={input.placeholder} />
+            return <InputField {...props} type={'tel'} name={input.name} placeholder={input.placeholder} />
 
         case 'textarea':
-            return <TextareaField name={input.name} placeholder={input.placeholder} />
+            return <TextareaField {...props} name={input.name} placeholder={input.placeholder} />
             
         case 'checkbox':
-            return <CheckboxField options={options} name={input.name} placeholder={input.placeholder} />
+            return <CheckboxField {...props} options={options} name={input.name} placeholder={input.placeholder} />
         
         case 'radiobutton':
-            return <RadioButtonField options={options} name={input.name} placeholder={input.placeholder} />
+            return <RadioButtonField {...props} options={options} name={input.name} placeholder={input.placeholder} />
 
         case 'password':
-            return <PasswordField name={input.name} placeholder={input.placeholder} />
+            return <PasswordField {...props} name={input.name} placeholder={input.placeholder} />
             
         default:
-            return <InputField name={input.name} placeholder={input.placeholder} />
+            return <InputField {...props} name={input.name} placeholder={input.placeholder} />
     }
 }
 

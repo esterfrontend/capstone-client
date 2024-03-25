@@ -1,8 +1,8 @@
 import { Input } from "@chakra-ui/react"
 
-const InputForm = ({name, placeholder}) => {
+const InputForm = ({onChange, name, placeholder}) => {
     return (
-        <Input maxW={'300px'} w={'100%'} margin={'0 auto'} 
+        <Input onChange={onChange} maxW={'300px'} w={'100%'} margin={'0 auto'} 
             name={name} 
             placeholder={placeholder}
         />

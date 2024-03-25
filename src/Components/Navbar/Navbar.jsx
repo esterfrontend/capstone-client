@@ -2,9 +2,13 @@ import { Flex } from '@chakra-ui/react'
 import Logo from '../Logo/Logo'
 import NavigationLink from '../NavigationLink/NavigationLink'
 import AuthLink from '../AuthLink/AuthLink'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
+import { useContext } from "react"
+import { AuthContext } from "../../contexts/AuthContext"
 
 const Navbar = () => {
+    const { user, logout } = useContext(AuthContext)
+
     const NAVIGATION = [
         {
             text: 'Yo actúo',
@@ -24,6 +28,8 @@ const Navbar = () => {
         }
     ]
 
+    const location = useLocation()
+
     return (
         <Flex as={"header"} className='container' paddingTop={'30px'} paddingBottom={'30px'} alignItems={'center'} justifyContent={'space-between'} position={'relative'}>
             <Link to='/'>
@@ -32,10 +38,12 @@ const Navbar = () => {
 
             <Flex gap={'4vw'} textAlign={'center'}>
                 { NAVIGATION.map(({ link, text }) => {
+                    const isActiveLink = location.pathname === link
                     return (
                         <NavigationLink 
                             to={link} 
                             key={text} 
+                            color={isActiveLink ? "brand.primary" : "brand.black"}
                         >
                             {text}
                         </NavigationLink>
@@ -43,9 +51,18 @@ const Navbar = () => {
                 })} 
             </Flex>
 
-            <Flex gap={'10px'} textAlign={'center'}>
-                <AuthLink to={"/inicio-sesion"}>Iniciar sesión</AuthLink>
-                <AuthLink to={"/registrarse"}>Registrarse</AuthLink>
+            <Flex gap={'20px'} textAlign={'center'}>
+                {user ? (
+                    <>
+                        <AuthLink to={"/mi-perfil"}>Mi perfil</AuthLink>
+                        <AuthLink onClick={logout}>Logout</AuthLink>
+                    </>
+                ) : (
+                    <>
+                        <AuthLink to={"/inicio-sesion"}>Iniciar sesión</AuthLink>
+                        <AuthLink to={"/registrarse"}>Registrarse</AuthLink>
+                    </>
+                )}
             </Flex>
         </Flex>
     )

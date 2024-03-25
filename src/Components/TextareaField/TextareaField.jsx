@@ -1,12 +1,12 @@
 import { Textarea } from "@chakra-ui/react"
 
-const TextareaForm = ({name, placeholder}) => {
+const TextareaField = ({onChange, name, placeholder}) => {
     return (
-        <Textarea maxW={'700px'} w={'100%'} minH={'120px'} margin={'0 auto'} 
+        <Textarea onChange={onChange} maxW={'700px'} w={'100%'} minH={'120px'} margin={'0 auto'} 
             name={name} 
             placeholder={placeholder}
         />
     )
 }
 
-export default TextareaForm
+export default TextareaField
