@@ -1,15 +1,12 @@
 import { Checkbox, Box, Stack } from "@chakra-ui/react"
 
-const CheckboxField = ({onChange, name, placeholder, options}) => {
+const CheckboxField = ({onChange, name, options}) => {
     return (
-        <Box onChange={onChange} colorScheme='gray' w={'fit-content'} margin={'0 auto'}
-            name={name} 
-            placeholder={placeholder}
-        >
+        <Box onChange={onChange} colorScheme='gray' w={'fit-content'} margin={'0 auto'}>
             <Stack spacing={[1, 5]} direction={'column'} w={'fit-content'}>
                 {
                     options.data.map((option, index)=> {
-                        return <Checkbox key={index} value={option.value}>{option.value}</Checkbox>
+                        return <Checkbox name={name} key={index} value={option.value}>{option.value}</Checkbox>
                     })
                 }
             </Stack>

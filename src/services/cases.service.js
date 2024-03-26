@@ -16,6 +16,11 @@ class CasesService extends AxiosConfig {
         )
         return response.data
     }
+
+    async createCase(data) {
+        const response = await this.axios.post("/cases/create", data)
+        return response.data
+    }
 }
 
 export default new CasesService

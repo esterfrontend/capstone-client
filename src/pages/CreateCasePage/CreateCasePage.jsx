@@ -5,7 +5,6 @@ import CreateCaseForm from '../../Components/CreateCaseForm/CreateCaseForm';
 import { Box } from "@chakra-ui/react";
 
 const CreateCasePage = () => {
-
     return (
         <PageWrapper>
             <Box as="section" marginBottom={'100px'}>

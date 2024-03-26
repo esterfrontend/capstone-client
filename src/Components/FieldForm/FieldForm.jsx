@@ -8,7 +8,7 @@ import PasswordField from '../PasswordField/PasswordField';
 const FieldForm = ({input, options, ...props}) => {
     switch(input.type) {
         case 'select':
-            return <SelectField {...props} options={options} name={input.name} placeholder={input.placeholder} />
+            return <SelectField {...props} options={options} name={input.name}/>
 
         case 'text':
             return <InputField {...props} name={input.name} placeholder={input.placeholder} />
@@ -23,7 +23,7 @@ const FieldForm = ({input, options, ...props}) => {
             return <TextareaField {...props} name={input.name} placeholder={input.placeholder} />
             
         case 'checkbox':
-            return <CheckboxField {...props} options={options} name={input.name} placeholder={input.placeholder} />
+            return <CheckboxField {...props} options={options} name={input.name}/>
         
         case 'radiobutton':
             return <RadioButtonField {...props} options={options} name={input.name} placeholder={input.placeholder} />

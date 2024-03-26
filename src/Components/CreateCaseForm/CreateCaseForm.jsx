@@ -1,25 +1,100 @@
 import CustomForm from '../../Components/CustomForm/CustomForm';
-import { Box, Text } from "@chakra-ui/react"
-import NumberedTitle from "../NumberedTitle/NumberedTitle"
-import FieldForm from '../FieldForm/FieldForm';
-// import { useEffect, useState } from 'react';
 import CASE_INPUTS from '../../const/caseInputs'
+import { useState } from 'react';
+import CasesService from '../../services/cases.service';
+import CreateCaseField from '../CreateCaseField/CreateCaseField';
+import { useToast } from "@chakra-ui/react"
+import { useNavigate } from "react-router-dom"
 
-const CreateCaseForm = ({onSubmit}) => {
-    return ( <>
+const CreateCaseForm = () => {
+
+    const [caseData, setCaseData] = useState({
+        school_id: '',
+        victim: '',
+        place: '',
+        how: '',
+        attacker: '',
+        moreInformation: '',
+        anonymous: '',
+        informantName: '',
+    })
+
+    const [isAnonymous, setIsAnonymous] = useState(true)
+
+    const toast = useToast()
+    const navigate = useNavigate()
+
+    // let placesValues = "";
+
+    const onChange = (e) => {
+        const { name, value } = e.target
+        // if (name === 'place') {
+        //     placesValues = value + ', ' + placesValues ;
+        // }
+        
+        if(name === 'anonymous') {
+            let boolIsAnonymous = (value === 'true')
+            setIsAnonymous(boolIsAnonymous)
+        }
+
+        setCaseData({ ...caseData, [name]: value })
+    }
+
+
+    const onSubmit = async (e) => {
+        try {
+            e.preventDefault()
+            console.log("create", caseData)
+            await CasesService.createCase(caseData)
+            setCaseData({
+                school_id: '',
+                victim: '',
+                place: '',
+                how: '',
+                attacker: '',
+                moreInformation: '',
+                anonymous: '',
+                informantName: '',
+            })
+            toast({
+                title: "Gracias por tu colaboración.",
+                description: "El colegio y el psicólogo han recibido el aviso para que puedan solucionarlo lo antes posible.",
+                status: "success",
+                duration: 5000,
+                isClosable: true,
+            })
+            navigate("/")
+
+        } catch (err) {
+            console.error(err)
+        }
+    }
+
+    return (<>
         <CustomForm onSubmit={onSubmit} buttonText="Enviar" maxW={'1000px'} margin={'0 auto'}>
-            { CASE_INPUTS.map((input, index) => {
+            {CASE_INPUTS.map((input, index) => {
+                let hidden = true
+                
+                input.name === 'informantName' && isAnonymous === true
+                    ? hidden = true
+                    : hidden = false
+
                 return (
-                    <Box padding={'30px'} key={index}>
-                        <NumberedTitle 
-                            number={index+1} 
-                            title={input.title}
-                        />
-                        <Text fontSize={'14px'} marginTop={'20px'} marginBottom={'20px'}>{input.text}</Text>
-                        <FieldForm input={input} options={input.options}/>
-                    </Box>
+                    <CreateCaseField 
+                        key={index} 
+                        onSubmit={onSubmit} 
+                        onChange={onChange}
+                        input={input} 
+                        index={index} 
+                        hidden={hidden}
+                    />
                 )
             })}
+
+            {/* {isAnonymous 
+                ? <CreateCaseField onSubmit={onSubmit} input={input} index={index}/>
+                : <></>
+            } */}
         </CustomForm>
     </>)
 }
