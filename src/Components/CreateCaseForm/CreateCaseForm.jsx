@@ -20,25 +20,28 @@ const CreateCaseForm = () => {
     })
 
     const [isAnonymous, setIsAnonymous] = useState(true)
+    const [placesValues, setPlacesValuess] = useState('')
 
     const toast = useToast()
     const navigate = useNavigate()
 
-    // let placesValues = "";
-
     const onChange = (e) => {
         const { name, value } = e.target
-        // if (name === 'place') {
-        //     placesValues = value + ', ' + placesValues ;
-        // }
+        
+        if (name === 'place') {
+            console.log('checked', e.target.checked)
+            setPlacesValuess(value + ' - ' + placesValues)
+        }
         
         if(name === 'anonymous') {
             let boolIsAnonymous = (value === 'true')
             setIsAnonymous(boolIsAnonymous)
         }
-
+        
         setCaseData({ ...caseData, [name]: value })
     }
+    
+    console.log(placesValues)
 
 
     const onSubmit = async (e) => {

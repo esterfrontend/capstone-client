@@ -1,24 +1,25 @@
 import PROVINCES from '../const/provinces'
 
+export const ROLE_INPUTS = {
+    type: 'radiobutton',
+    name: 'role',
+    placeholder: '',
+    text: '¿Qué tipo de usuario eres?',
+    options: {
+        data: [
+            {
+                name:'Colegio',
+                value: 'colegio'
+            },
+            {
+                name:'Psicólogo',
+                value: 'profesional'
+            }
+        ]
+    }
+}
+
 const SIGNUP_INPUTS = [
-    {
-        type: 'radiobutton',
-        name: 'role',
-        placeholder: '',
-        text: '¿Qué tipo de usuario eres?',
-        options: {
-            data: [
-                {
-                    name:'Colegio',
-                    value: 'colegio'
-                },
-                {
-                    name:'Psicólogo',
-                    value: 'profesional'
-                }
-            ]
-        }
-    },
     {
         type: 'email',
         name: 'email',
@@ -34,12 +35,20 @@ const SIGNUP_INPUTS = [
     {
         name: 'name',
         placeholder: '',
-        text: 'Nombre',
+        text: 'Nombre y apellidos',
+        role: 'profesional'
+    },
+    {
+        name: 'name',
+        placeholder: '',
+        text: 'Nombre del colegio',
+        role: 'colegio'
     },
     {
         name: 'registrationNumber',
         placeholder: '',
-        text: 'Número de colegiado',
+        text: 'Número de colegiado (será comprobado)',
+        role: 'profesional'
     },
     {
         name: 'address',
@@ -64,6 +73,7 @@ const SIGNUP_INPUTS = [
         name: 'contactPerson',
         placeholder: '',
         text: 'Persona de contacto',
+        role: 'colegio'
     },
     {
         name: 'phone',
@@ -74,6 +84,7 @@ const SIGNUP_INPUTS = [
         name: 'phoneSecondary',
         placeholder: '',
         text: 'Teléfono secundario',
+        role: 'colegio'
     }
 ]
 
