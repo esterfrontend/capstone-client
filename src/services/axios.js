@@ -6,6 +6,10 @@ class AxiosConfig {
             baseURL: `http://localhost:3000/api/`
         })
     }
+
+    getToken() {
+        return localStorage.getItem("token")
+    }
 }
 
 export default AxiosConfig

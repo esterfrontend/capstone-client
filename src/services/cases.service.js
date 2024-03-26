@@ -5,14 +5,14 @@ class CasesService extends AxiosConfig {
         super('cases')
     }
 
-    async getAllCases(token) {
+    async getAllCases() {
+        const token = this.getToken()
         const response = await this.axios.get('/cases/getAll',
-        {},
-        {
-            headers: {
-                Authorization: `Bearer ${token}`,
-            },
-        }
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            }
         )
         return response.data
     }
