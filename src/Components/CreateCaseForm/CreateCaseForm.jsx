@@ -20,17 +20,21 @@ const CreateCaseForm = () => {
     })
 
     const [isAnonymous, setIsAnonymous] = useState(true)
-    const [placesValues, setPlacesValuess] = useState('')
+    const [placesValues, setPlacesValuess] = useState({
+        atSchool: false,
+        outside: false,
+        socialMedia: false
+    })
 
     const toast = useToast()
     const navigate = useNavigate()
 
     const onChange = (e) => {
-        const { name, value } = e.target
+        let { name, value, checked } = e.target
         
         if (name === 'place') {
-            console.log('checked', e.target.checked)
-            setPlacesValuess(value + ' - ' + placesValues)
+            setPlacesValuess({ ...placesValues, [value]: checked})
+            value = placesValues
         }
         
         if(name === 'anonymous') {
@@ -40,13 +44,11 @@ const CreateCaseForm = () => {
         
         setCaseData({ ...caseData, [name]: value })
     }
-    
-    console.log(placesValues)
-
 
     const onSubmit = async (e) => {
         try {
             e.preventDefault()
+            
             console.log("create", caseData)
             await CasesService.createCase(caseData)
             setCaseData({

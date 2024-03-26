@@ -27,13 +27,16 @@ const CASE_INPUTS = [
         options: {
             data: [
                 {
-                    value: 'En el colegio'
+                    value: 'atSchool',
+                    text: 'En el colegio'
                 },
                 {
-                    value: 'Fuera del colegio',
+                    value: 'outside',
+                    text: 'Fuera del colegio',
                 },
                 {
-                    value: 'En las redes sociales',
+                    value: 'socialMedia',
+                    text: 'En las redes sociales',
                 }
             ]
         }
