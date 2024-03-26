@@ -1,12 +1,13 @@
 import { Box, Flex, Heading, Text } from '@chakra-ui/react';
 import Button from '../Button/Button';
-import img from '../../resources/main-illustration.svg'
+
+const imgRoute = 'https://res.cloudinary.com/dsywb80za/image/upload/v1711458243/main-illustration_ciysmj.svg'
 
 const MainBanner = () => {
     return (
         <Flex className="container" 
             bgColor={'brand.pinkUltraLight'} 
-            bgImage={img}
+            bgImage={imgRoute}
             bgPosition={'bottom right'}
             bgRepeat={'no-repeat'}
             bgSize={'50%'}

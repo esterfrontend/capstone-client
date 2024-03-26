@@ -1,5 +1,6 @@
 import { Box, Flex, Heading, Image } from "@chakra-ui/react";
-import professionalImage from '../../resources/user-professional.svg'
+
+const professionalImage = 'https://res.cloudinary.com/dsywb80za/image/upload/v1711458341/user-professional_wyyxkf.svg'
 
 const RelatedUser = ({caseDetails, ...props}) => {
     return (
