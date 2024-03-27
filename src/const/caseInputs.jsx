@@ -1,16 +1,4 @@
-import schoolsData from '../mocks/mockSchools.json'
-
 const CASE_INPUTS = [
-    {
-        type: 'select',
-        name: 'school_id',
-        placeholder: 'Selecciona el colegio',
-        title: '¿En qué colegio se da el caso?',
-        text: 'Selecciona en el desplegable el colegio. Si no aparece en el listado, puede que el colegio no esté inscrito en el programa.',
-        options: {
-            data: schoolsData,
-        }
-    },
     {
         type: 'textarea',
         name: 'victim',

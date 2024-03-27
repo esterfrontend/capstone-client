@@ -36,6 +36,7 @@ const AppRoutes = () => {
                 {
                     path: "/nuevo-caso",
                     element: <CreateCasePage />,
+                    loader: LoaderSchoolsPage
                 },
                 {
                     path: "/colegios",

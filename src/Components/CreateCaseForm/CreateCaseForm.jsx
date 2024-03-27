@@ -5,6 +5,7 @@ import CasesService from '../../services/cases.service';
 import CreateCaseField from '../CreateCaseField/CreateCaseField';
 import { useToast } from "@chakra-ui/react"
 import { useNavigate } from "react-router-dom"
+import { useLoaderData } from 'react-router-dom';
 
 const CreateCaseForm = () => {
 
@@ -75,22 +76,35 @@ const CreateCaseForm = () => {
         }
     }
 
+    const schoolsData = useLoaderData()
+
+    const SCHOOLS_INPUT = {
+        type: 'select',
+        name: 'school_id',
+        placeholder: 'Selecciona el colegio',
+        title: '¿En qué colegio se da el caso?',
+        text: 'Selecciona en el desplegable el colegio. Si no aparece en el listado, puede que el colegio no esté inscrito en el programa.',
+        options: {
+            data: schoolsData,
+        }
+    }
+
     return (<>
         <CustomForm onSubmit={onSubmit} buttonText="Enviar" maxW={'1000px'} margin={'0 auto'}>
+            <CreateCaseField 
+                onSubmit={onSubmit} 
+                onChange={onChange}
+                input={SCHOOLS_INPUT} 
+                index={0} 
+                valueOptions={'_id'}
+                nameOptions={'name'}
+            />
             {CASE_INPUTS.map((input, index) => {
                 let hidden = true
                 
                 input.name === 'informantName' && isAnonymous === true
                     ? hidden = true
-                    : hidden = false  
-                    
-                let valueOptions = ''
-                let nameOptions = ''
-                
-                if(input.name === 'school_id') {
-                    valueOptions = '_id'
-                    nameOptions = 'name'
-                }
+                    : hidden = false                
 
                 return (
                     <CreateCaseField 
@@ -98,10 +112,8 @@ const CreateCaseForm = () => {
                         onSubmit={onSubmit} 
                         onChange={onChange}
                         input={input} 
-                        index={index} 
+                        index={index +1} 
                         hidden={hidden}
-                        valueOptions={valueOptions}
-                        nameOptions={nameOptions}
                     />
                 )
             })}
