@@ -10,6 +10,7 @@ import { useLoaderData } from 'react-router-dom';
 const CreateCaseForm = () => {
 
     const [caseData, setCaseData] = useState({
+        state: 'abierto',
         school_id: '',
         victim: '',
         place: '',
