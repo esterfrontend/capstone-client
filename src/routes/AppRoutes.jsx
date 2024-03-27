@@ -32,6 +32,7 @@ const AppRoutes = () => {
                 {
                     path: "/registrarse",
                     element: <SignupPage />,
+                    loader: LoaderProfessionalsPage
                 },
                 {
                     path: "/nuevo-caso",

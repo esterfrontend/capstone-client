@@ -1,16 +1,22 @@
-import React, { useEffect, useState } from "react"
+import { useEffect, useState, useContext } from "react"
 import authService from "../../services/auth.service"
 import MainHeading from '../../Components/MainHeading/MainHeading';
 import TextBlock from '../../Components/TextBlock/TextBlock';
 import { Box, Flex, Grid, Text, useToast } from "@chakra-ui/react"
-import { useNavigate } from "react-router-dom"
 import SignupForm from "../../Components/SignupForm/SignupForm"
 import FieldForm from "../../Components/FieldForm/FieldForm"
 import { ROLE_INPUTS } from "../../const/signupInputs"
 import SIGNUP_INPUTS from '../../const/signupInputs'
 import SubmitButton from "../../Components/SubmitButton/SubmitButton"
+import { useLoaderData } from 'react-router-dom';
+import ProfessionalSelector from '../../Components/ProfessionalSelector/ProfessionalSelector';
+import { AuthContext } from '../../contexts/AuthContext'
+
 
 const SignupPage = () => {
+    const { login } = useContext(AuthContext)
+    const professionals = useLoaderData()
+
     const [userData, setUserData] = useState({
         email: '',
         password: '',
@@ -23,13 +29,12 @@ const SignupPage = () => {
         contactPerson: '',
         phone: '',
         phoneSecondary: '',
-        professional: ''
+        professional_id: null
     })
 
     const [roleValue, setRoleValue] = useState('')
 
     const toast = useToast()
-    const navigate = useNavigate()
 
     const onChange = (e) => {
         const { name, value } = e.target
@@ -50,10 +55,11 @@ const SignupPage = () => {
                 duration: 5000,
                 isClosable: true,
             })
-            navigate("/inicio-sesion")
         } catch (error) {
             console.log("Error ==>", error)
         }
+
+        await login(userData)
     }
 
     return (
@@ -66,7 +72,7 @@ const SignupPage = () => {
                 <p><strong>¡Gracias por actuar!</strong></p>
             </TextBlock>
         
-            <Flex as='form' onSubmit={onSubmit} direction={'column'} gap={'20px'} alignItems={'center'} maxW={'1000px'} margin={'0 auto 50px'} padding={'0 50px'}>                    
+            <Flex as='form' onSubmit={onSubmit} direction={'column'} gap={'20px'} alignItems={'center'} maxW={'1000px'} margin={'0 auto 100px'} padding={'0 50px'}>                    
                 <Box textAlign={'center'}>
                     <Text fontSize={'14px'} marginTop={'20px'} marginBottom={'5px'}>¿Qué tipo de usuario eres?</Text>
                     <FieldForm onChange={onChange} 
@@ -111,7 +117,10 @@ const SignupPage = () => {
                 ) : <></> }
 
                 { roleValue === 'colegio' ? (
-                    <h2>Elige psicólogo</h2>
+                    <>
+                        <h2>Elige psicólogo</h2>
+                        <ProfessionalSelector professionals={professionals} onChange={onChange}/>
+                    </>
                 ) : <></> }
 
                 { roleValue ? (
