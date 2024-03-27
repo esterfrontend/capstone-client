@@ -2,7 +2,7 @@ import { Radio, RadioGroup, Stack } from "@chakra-ui/react"
 
 const RadioButtonField = ({onChange, name, options}) => {
     return (
-        <RadioGroup colorScheme='gray' w={'fit-content'} margin={'0 auto'}>
+        <RadioGroup w={'fit-content'} margin={'0 auto'}>
             <Stack spacing={[1, 5]} direction={'row'} justifyContent={'center'}>
                 {
                     options.data.map((option, index)=> {
