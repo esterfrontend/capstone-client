@@ -4,7 +4,7 @@ import CustomLink from "../CustomLink/CustomLink"
 
 const CaseCard = ({ocurrence}) => {
     return (
-        <CustomLink to={'/mis-casos/caso'} 
+        <CustomLink to={`/mis-casos/${ocurrence._id}`} 
             display={'inline-block'} border={'1px solid'} borderColor={'brand.primaryLight'}
             _hover={{
                 bgColor: 'brand.primaryUltraLight'

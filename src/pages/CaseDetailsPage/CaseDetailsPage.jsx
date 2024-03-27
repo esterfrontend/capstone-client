@@ -1,21 +1,19 @@
 import PageWrapper from "../../Components/PageWrapper/PageWrapper";
-import { useState } from 'react'
-import CASE_MOCK from '../../mocks/mockCase.json'
 import { Flex } from "@chakra-ui/react";
 import GoBackLink from "../../Components/GoBackLink/GoBackLink";
 import CaseDetails from "../../Components/CaseDetails/CaseDetails";
 import RelatedUser from "../../Components/RelatedUser/RelatedUser";
+import { useLoaderData } from 'react-router-dom'
 
 function CaseDetailsPage() {
-
-    const [caseDetails, setcaseDetails] = useState(CASE_MOCK)
+    const caseDetails = useLoaderData()
 
     return (
         <PageWrapper className="container" marginTop={'20px'}>
 
             <GoBackLink to="/mis-casos" />
 
-            <Flex gap={'70px'}>
+            <Flex gap={'70px'} justifyContent={'space-between'}>
                 <CaseDetails
                     as='main' 
                     caseDetails={caseDetails} 
