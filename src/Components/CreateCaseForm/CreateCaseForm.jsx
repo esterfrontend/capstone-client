@@ -82,7 +82,15 @@ const CreateCaseForm = () => {
                 
                 input.name === 'informantName' && isAnonymous === true
                     ? hidden = true
-                    : hidden = false
+                    : hidden = false  
+                    
+                let valueOptions = ''
+                let nameOptions = ''
+                
+                if(input.name === 'school_id') {
+                    valueOptions = '_id'
+                    nameOptions = 'name'
+                }
 
                 return (
                     <CreateCaseField 
@@ -92,14 +100,11 @@ const CreateCaseForm = () => {
                         input={input} 
                         index={index} 
                         hidden={hidden}
+                        valueOptions={valueOptions}
+                        nameOptions={nameOptions}
                     />
                 )
             })}
-
-            {/* {isAnonymous 
-                ? <CreateCaseField onSubmit={onSubmit} input={input} index={index}/>
-                : <></>
-            } */}
         </CustomForm>
     </>)
 }

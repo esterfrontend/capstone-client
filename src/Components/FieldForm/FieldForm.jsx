@@ -5,10 +5,10 @@ import CheckboxField from '../CheckboxField/CheckboxField';
 import RadioButtonField from '../RadioButtonField/RadioButtonField';
 import PasswordField from '../PasswordField/PasswordField';
 
-const FieldForm = ({input, options, ...props}) => {
+const FieldForm = ({input, ...props}) => {
     switch(input.type) {
         case 'select':
-            return <SelectField {...props} options={options} name={input.name}/>
+            return <SelectField {...props} name={input.name}/>
 
         case 'text':
             return <InputField {...props} name={input.name} placeholder={input.placeholder} />
@@ -23,10 +23,10 @@ const FieldForm = ({input, options, ...props}) => {
             return <TextareaField {...props} name={input.name} placeholder={input.placeholder} />
             
         case 'checkbox':
-            return <CheckboxField {...props} options={options} name={input.name}/>
+            return <CheckboxField {...props} name={input.name}/>
         
         case 'radiobutton':
-            return <RadioButtonField {...props} options={options} name={input.name} placeholder={input.placeholder} />
+            return <RadioButtonField {...props} name={input.name} placeholder={input.placeholder} />
 
         case 'password':
             return <PasswordField {...props} name={input.name} placeholder={input.placeholder} />

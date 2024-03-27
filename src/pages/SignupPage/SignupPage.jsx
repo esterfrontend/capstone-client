@@ -33,7 +33,6 @@ const SignupPage = () => {
 
     const onChange = (e) => {
         const { name, value } = e.target
-        console.log(name, value)
         if(name === 'role') {
             setRoleValue(value)
         }
@@ -87,9 +86,23 @@ const SignupPage = () => {
                     >
                         {SIGNUP_INPUTS.map((input, index) => {
                             if( input.role === roleValue || !input.role) {
+                                let valueOptions = ''
+                                let nameOptions = ''
+                                
+                                if(input.name === 'province') {
+                                    valueOptions = 'name'
+                                    nameOptions = 'name'
+                                }
+
                                 return (
-                                    <Box w={'100%'}>
-                                        <SignupForm onChange={onChange} input={input} index={index} />
+                                    <Box key={index} w={'100%'}>
+                                        <SignupForm 
+                                            onChange={onChange} 
+                                            input={input} 
+                                            index={index} 
+                                            valueOptions={valueOptions}
+                                            nameOptions={nameOptions}
+                                        />
                                     </Box>
                                 )
                             }
