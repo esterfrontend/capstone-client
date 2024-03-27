@@ -45,7 +45,7 @@ export const AuthProvider = ({ children }) => {
             const { token } = await authService.login(userData)
             setToken(token)
             await getProfile()
-            navigate("/")
+            navigate("/mi-perfil")
         } catch (error) {
             console.log("Error ==> ", error)
         }
