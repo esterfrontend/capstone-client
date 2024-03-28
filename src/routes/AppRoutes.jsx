@@ -14,6 +14,7 @@ import MyCasesPage from "../pages/MyCasesPage/MyCasesPage";
 import LoaderCasesPage from "../pages/MyCasesPage/LoaderCasesPage";
 import CaseDetailsPage from "../pages/CaseDetailsPage/CaseDetailsPage";
 import LoaderCaseDetailsPage from '../pages/CaseDetailsPage/LoaderCaseDetailsPage'
+import MyPartner from "../pages/MyPartner/MyPartner";
 
 const AppRoutes = () => {
     const router = createBrowserRouter([
@@ -70,7 +71,15 @@ const AppRoutes = () => {
                     path: "/psicologo-asociado",
                     element: (
                         <AuthMiddleware>
-                            <ProfilePage />
+                            <MyPartner/>
+                        </AuthMiddleware>
+                    ),
+                },
+                {
+                    path: "/colegios-asociados",
+                    element: (
+                        <AuthMiddleware>
+                            <MyPartner/>
                         </AuthMiddleware>
                     ),
                 },
