@@ -1,9 +1,10 @@
 import { Text } from "@chakra-ui/react"
 import CustomLink from "../CustomLink/CustomLink"
 
-const Button = ({ children, to }) => {
+const Button = ({ children, to, onClick }) => {
     return (
         <CustomLink 
+            onClick={onClick}
             to={to}
             color={'white'}
             bgColor={'brand.primary'}

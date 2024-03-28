@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import authService from "../services/auth.service"
+import userService from "../services/user.service"
 
 export const AuthContext = createContext()
 
@@ -34,7 +35,6 @@ export const AuthProvider = ({ children }) => {
 
     const logout = (e) => {
         if (e) e.preventDefault()
-        console.log('He hecho logout')
         localStorage.removeItem("token")
         setUser(null)
         navigate("/inicio-sesion")
@@ -51,12 +51,25 @@ export const AuthProvider = ({ children }) => {
         }
     }
 
+    const removeUser = async () => {
+        try {
+            const token = getToken()
+            if (token) {
+                await userService.removeUser(token)
+            }
+            setUser(null)
+            navigate("/inicio-sesion")
+        } catch (error) {
+            console.log("Error => ", error)
+        }
+    }
+
     useEffect(() => {
         getProfile()
     }, [])
 
     return (
-        <AuthContext.Provider value={{ user, logout, login, isLoading }}>
+        <AuthContext.Provider value={{ user, logout, login, isLoading, removeUser }}>
             {children}
         </AuthContext.Provider>
     )
