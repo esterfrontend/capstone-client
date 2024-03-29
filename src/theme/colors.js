@@ -1,5 +1,8 @@
 
 const colors = {
+    red: {
+        500: '#F25942'
+    },
     brand: {
         primary: '#58928B',
         pink: '#FDE1D8',
@@ -9,7 +12,7 @@ const colors = {
         primaryUltraLight: '#dce8e7',
         pinkLight: '#FEEDE7',
         pinkUltraLight: '#FFF9F7',
-    },
+    }
 }
 
 export default colors

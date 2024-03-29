@@ -6,6 +6,7 @@ import CustomLink from "../../Components/CustomLink/CustomLink"
 import Button from "../../Components/Button/Button"
 import CustomModal from "../../Components/CustomModal/CustomModal"
 import UserDetails from "../../Components/UserDetails/UserDetails"
+import RemoveButton from "../../Components/RemoveButton/RemoveButton"
 
 const ProfilePage = () => {
     const { user, removeUser } = useContext(AuthContext)
@@ -18,9 +19,9 @@ const ProfilePage = () => {
 
             <UserDetails user={user}/>
 
-            <Button onClick={onOpen}>
+            <RemoveButton onClick={onOpen}>
                 Eliminar cuenta
-            </Button>
+            </RemoveButton>
 
             <CustomModal 
                 isOpen={isOpen} 
@@ -40,10 +41,10 @@ const ProfilePage = () => {
                     <Button onClick={onClose}>
                         Cancelar
                     </Button>
-                    
-                    <Button onClick={removeUser}>
+                
+                    <RemoveButton onClick={removeUser}>
                         Eliminar cuenta
-                    </Button>
+                    </RemoveButton>
                 </Flex>
             </CustomModal>
             
