@@ -33,6 +33,19 @@ class CasesService extends AxiosConfig {
         const response = await this.axios.post('/cases/create', data)
         return response.data
     }
+
+    async editcase(case_id, status) {
+        const token = this.getToken()
+        const response = await this.axios.put(`/cases/changeCaseStatus/${case_id}`, 
+            status,
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            }
+        )
+        return response.data
+      }
 }
 
 export default new CasesService

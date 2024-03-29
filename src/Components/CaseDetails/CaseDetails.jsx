@@ -1,73 +1,109 @@
-import { Box } from "@chakra-ui/react";
+import { Box, Tabs, TabList, Tab, TabPanels, TabPanel, Text, Select} from "@chakra-ui/react";
+import Complaint from "../Complaint/Complaint";
+import casesService from "../../services/cases.service";
+import { useContext } from "react";
+import { AuthContext } from "../../contexts/AuthContext"
+import SimpleForm from "../SimpleForm/SimpleForm";
+import STATUS_VALUES from '../../const/statusValues'
+import { useToast } from "@chakra-ui/react"
 
 const CaseDetails = ({caseDetails, ...props}) => {
+    const { user } = useContext(AuthContext)
+    const toast = useToast()
+
+    const { _id: case_id } = caseDetails
+
+    const COMMENTS_INPUT = [
+        {
+            type: 'textarea',
+            name: 'comments',
+            placeholder: 'Escribe aquí tu comentario',
+        }
+    ]
+
+    const onChangeStatus = async (e) => {
+        const newStatus = e.target.value
+
+        try {
+            await casesService.editcase(
+                case_id,
+                {status: newStatus}
+            )
+
+            toast({
+                title: "El estado de este caso ha sido modificado.",
+                status: "success",
+                duration: 5000,
+                isClosable: true,
+            })
+        } catch (err) {
+            console.error(err)
+            toast({
+                title: "Ha ocurrido un error.",
+                description: "El estado no ha podido modificarse correctamente.",
+                status: "error",
+                duration: 5000,
+                isClosable: true,
+            })
+        }
+        
+    }
+
+    const onChange = (e) => {
+
+    }
+
+    const onSubmit = async (e) => {
+
+    }
+    
     return (
-        <Box {...props}>
-            <p><strong>Estado:</strong> {caseDetails.state}</p>
+        <Box {...props} flex={'1'}>
+            <Box w={'80%'} mb={'50px'}>
+                <Text fontSize={'20px'} fontWeight={'600'}>Estado</Text>
+                <Text>Modifica el estado del caso conforme se vayan realizando avances. Este estado también puede ser modificado por el {user.role === 'colegio' ? 'psicólogo' : 'colegio'} asociado.</Text>
+                { user.role === 'colegio' ? (
+                    <Text>Recuerda que debe ser el psicólogo quien marque las pautas durante todo el proceso.</Text> 
+                ) : <></>}
 
-            { caseDetails.victim
-                ? (
-                <div>
-                    <p><strong>Víctima</strong></p>
-                    <p>{caseDetails.victim}</p>
-                </div>
-                ): <></>
-            }
-
-            { caseDetails.place
-                ? (
-                <div>
-                    <p><strong>Dónde sufre acoso</strong></p>
+                <Select onChange={onChangeStatus} maxW={'250px'}
+                    defaultValue={caseDetails.status}
+                >
                     {
-                        caseDetails.place.atSchool
-                            ? <p>En el colegio</p>
-                            : <></>
+                        STATUS_VALUES.map((option, index)=> {
+                            return <option key={index} value={option.value}>{option.name}</option>
+                        })
                     }
-                    {
-                        caseDetails.place.outside
-                            ? <p>Fuera del colegio</p>
-                            : <></>
-                    }
-                    {
-                        caseDetails.place.socialMedia
-                            ? <p>El las redes sociales</p>
-                            : <></>
-                    }
-                </div>
-                ): <></>
-            }
+                </Select>
+            </Box>
 
-            { caseDetails.how
-                ? (
-                <div>
-                    <p><strong>Cómo sufre acoso</strong></p>
-                    <p>{caseDetails.how}</p>
-                </div>
-                ): <></>
-            }
+            <Box w={'80%'} mb={'100px'}>
+                <Text fontSize={'20px'} fontWeight={'600'}>Añade un comentario sobre el caso</Text>
 
-            { caseDetails.attacker
-                ? (
-                <div>
-                    <p><strong>Atacantes</strong></p>
-                    <p>{caseDetails.attacker}</p>
-                </div>
-                ): <></>
-            }
+                <SimpleForm
+                    alignItems={'flex-start'}
+                    onChange={onChange}
+                    onSubmit={onSubmit}
+                    inputs={COMMENTS_INPUT}
+                    buttonText={'Guardar comentario'}
+                />
+            </Box>
 
-            { caseDetails.moreInformation
-                ? (
-                <div>
-                    <p><strong>Más información</strong></p>
-                    <p>{caseDetails.moreInformation}</p>
-                </div>
-                ): <></>
-            }
+            <Tabs variant='unstyled'>
+                <TabList>
+                    <Tab padding={'10px 30px'} _selected={{ fontWeight: '600', bg: 'brand.primaryLight' }}>Denuncia</Tab>
+                    <Tab padding={'10px 30px'} _selected={{ fontWeight: '600', bg: 'brand.primaryLight' }}>Comentarios</Tab>
+                </TabList>
 
-            <div>
-                <p><strong>Informante</strong></p>
-                <p>{caseDetails.informant.anonymous === true ? 'Anónimo' : caseDetails?.informant.name}</p>
-            </div>
+                <TabPanels>
+                    <TabPanel border={'1px solid'} padding={'30px'} borderColor={'brand.primaryLight'}>
+                        <Complaint caseDetails={caseDetails}/>
+                    </TabPanel>
+                    <TabPanel border={'1px solid'} padding={'30px'} borderColor={'brand.primaryLight'}>
+                        <p>Todavía no hay ningún comentario!</p>
+                    </TabPanel>
+                </TabPanels>
+            </Tabs>
         </Box>
     )
 }
