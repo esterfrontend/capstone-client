@@ -91,7 +91,7 @@ const CreateCaseForm = () => {
     }
 
     return (<>
-        <CustomForm onSubmit={onSubmit} buttonText="Enviar" maxW={'1000px'} margin={'0 auto'} alignItems={'center'}>
+        <CustomForm onSubmit={onSubmit} buttonText="Enviar" maxW={'1000px'} margin={'0 auto'} alignItems={'center'} textAlign={'center'}>
             <CreateCaseField 
                 onSubmit={onSubmit} 
                 onChange={onChange}
