@@ -37,6 +37,7 @@ const LoginPage = () => {
                     onSubmit={onSubmit}
                     inputs={LOGIN_INPUTS}
                     buttonText={'Entra'}
+                    alignItems={'center'}
                 />
             </Box>
             <Flex
