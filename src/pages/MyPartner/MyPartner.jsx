@@ -15,17 +15,12 @@ const MyPartner = () => {
             <Box>
             { user.role === 'colegio'
                 ? <UserDetails user={user.professional}/>
-                // : <SchoolsGrid schools={user.schools}/>
                 : (
-                    user.schools.map((school) => {
-                        return (<>
-                            <Box className='partner-school'>
+                    user.schools.map((school, index) => {
+                        return (
+                            <Box className='partner-school' key={index}>
                                 <UserDetails user={school}/>
                             </Box>
-                            <Box className='partner-school'>
-                                <UserDetails user={school}/>
-                            </Box>
-                            </>
                         )
                     })
                 )
