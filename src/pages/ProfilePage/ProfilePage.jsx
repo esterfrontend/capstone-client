@@ -1,16 +1,13 @@
 import React, { useContext, useEffect, useState } from "react"
 import { AuthContext } from "../../contexts/AuthContext"
 import ProfilePageLayout from "../../Components/ProfilePageLayout/ProfilePageLayout"
-import { Flex, Grid, useDisclosure } from "@chakra-ui/react"
+import { Flex, useDisclosure } from "@chakra-ui/react"
 import Button from "../../Components/Button/Button"
-import CustomModal from "../../Components/CustomModal/CustomModal"
 import UserDetails from "../../Components/UserDetails/UserDetails"
 import RemoveButton from "../../Components/RemoveButton/RemoveButton"
 import userService from "../../services/user.service"
 import { useToast } from "@chakra-ui/react"
 import RemoveUserModal from "../../Components/RemoveUserModal/RemoveUserModal"
-import EDITUSER_INPUTS from "../../const/editUserInputs"
-import UserInputs from "../../Components/UserInputs/UserInputs"
 import EditUserModal from "../../Components/EditUserModal/EditUserModal"
 
 

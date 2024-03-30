@@ -1,8 +1,8 @@
-import { Box, Flex } from "@chakra-ui/react"
+import { Flex } from "@chakra-ui/react"
 import { useLocation } from 'react-router-dom'
 import './ProfileNavigation.css'
 import CustomLink from "../CustomLink/CustomLink"
-import React, { useContext, Fragment } from "react"
+import React, { useContext } from "react"
 import { AuthContext } from "../../contexts/AuthContext"
 
 const ProfileNavigation = () => {
