@@ -13,7 +13,7 @@ const MainBanner = () => {
             bgSize={'50%'}
             padding={'180px 50px 80px 80px'}
             minH={'90vh'}
-            marginTop={'-115px'}
+            marginTop={'-125px'}
             alignItems={'center'}
         >
             <Box w={'60%'}>
