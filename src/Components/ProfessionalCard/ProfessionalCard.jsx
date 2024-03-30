@@ -4,10 +4,9 @@ import CustomLink from "../CustomLink/CustomLink"
 const ProfessionalCard = ({professional}) => {
     return (
         <Box 
-            border={'2px solid'} 
-            borderRadius={'10px'}
+            border={'1px solid'} 
             borderColor={'brand.primaryLight'}
-            padding={'10px'}
+            padding={['15px', '20px', '25px', '25px', '35px']}
         >
             <Text
                 as={'h2'}
