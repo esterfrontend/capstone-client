@@ -4,6 +4,7 @@ import CustomLink from "../CustomLink/CustomLink"
 const Button = ({ children, to, onClick }) => {
     return (
         <CustomLink 
+            display={'inline-block'}
             onClick={onClick}
             to={to}
             color={'white'}
@@ -12,7 +13,7 @@ const Button = ({ children, to, onClick }) => {
             padding={'10px 20px'}
             textTransform={'uppercase'}
             fontWeight={'bold'}
-            _hover={{textDecoration:'none'}}
+            _hover={{bgColor:'brand.primaryDark'}}
         >
             <Text as={"span"}>{children}</Text>
         </CustomLink>
