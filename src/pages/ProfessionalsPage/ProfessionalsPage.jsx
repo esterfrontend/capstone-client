@@ -3,6 +3,7 @@ import MainHeading from '../../Components/MainHeading/MainHeading';
 import { Box } from "@chakra-ui/react";
 import { useLoaderData } from 'react-router-dom';
 import ProfessionalsGrid from '../../Components/ProfessionalsGrid/ProfessionalsGrid';
+import SignUpLinkBox from '../../Components/SignUpLinkBox/SignUpLinkBox';
 
 
 function ProfessionalsPage() {
@@ -16,6 +17,7 @@ function ProfessionalsPage() {
                 </MainHeading>
                 <ProfessionalsGrid professionals={professionals}/>
             </Box>
+            <SignUpLinkBox/>
         </PageWrapper>
     )
 }
