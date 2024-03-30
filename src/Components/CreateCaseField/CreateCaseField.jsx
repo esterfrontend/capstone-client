@@ -11,7 +11,7 @@ const CreateCaseField = ({onChange, index, input, hidden, valueOptions, nameOpti
                 title={input.title}
             />
             <Text fontSize={'14px'} marginTop={'20px'} marginBottom={'20px'}>{input.text}</Text>
-            <FieldForm input={input} options={input.options} onChange={onChange} valueOptions={valueOptions} nameOptions={nameOptions}/>
+            <FieldForm input={input} options={input.options} onChange={onChange} valueOptions={valueOptions} nameOptions={nameOptions} placeholder={input.placeholder} />
         </Box>
     )
 }

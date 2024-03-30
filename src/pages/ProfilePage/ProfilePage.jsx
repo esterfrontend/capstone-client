@@ -1,53 +1,84 @@
-import { useContext } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import { AuthContext } from "../../contexts/AuthContext"
 import ProfilePageLayout from "../../Components/ProfilePageLayout/ProfilePageLayout"
-import { Box, Text, Flex, useDisclosure } from "@chakra-ui/react"
-import CustomLink from "../../Components/CustomLink/CustomLink"
+import { Flex, Grid, useDisclosure } from "@chakra-ui/react"
 import Button from "../../Components/Button/Button"
 import CustomModal from "../../Components/CustomModal/CustomModal"
 import UserDetails from "../../Components/UserDetails/UserDetails"
 import RemoveButton from "../../Components/RemoveButton/RemoveButton"
+import userService from "../../services/user.service"
+import { useToast } from "@chakra-ui/react"
+import RemoveUserModal from "../../Components/RemoveUserModal/RemoveUserModal"
+import EDITUSER_INPUTS from "../../const/editUserInputs"
+import UserInputs from "../../Components/UserInputs/UserInputs"
+import EditUserModal from "../../Components/EditUserModal/EditUserModal"
+
 
 const ProfilePage = () => {
     const { user, removeUser } = useContext(AuthContext)
-    const { isOpen, onOpen, onClose } = useDisclosure()
+    const { isOpen: isOpenEditModal, onOpen: onOpenEditModal, onClose: onCloseEditModal } = useDisclosure()
+    const { isOpen: isOpenRemoveModal, onOpen: onOpenRemoveModal, onClose: onCloseRemoveModal } = useDisclosure()
+    const toast = useToast()
+    const [editedUser, setEditedUser] = useState(user)
+    const [newUser, setNewUser] = useState(user)
 
-    const {role, name} = user
+    const { role, name } = user
+
+    useEffect(() => {
+        setNewUser(user);
+    }, [newUser]);
+
+    const onChange = (e) => {
+        const { name, value } = e.target
+        setEditedUser({ ...editedUser, [name]: value })
+    }
+
+    const editUser = async () => {
+        try {
+            await userService.editUser(
+                editedUser
+            )
+
+            setNewUser(editedUser)
+
+            onCloseEditModal()
+
+            toast({
+                title: "El usuario ha sido modificado.",
+                status: "success",
+                duration: 5000,
+                isClosable: true,
+            })
+        } catch (err) {
+            console.error(err)
+            toast({
+                title: "Ha ocurrido un error.",
+                description: "El usuario no ha podido modificarse correctamente.",
+                status: "error",
+                duration: 5000,
+                isClosable: true,
+            })
+        }
+    }
+
 
     return (
         <ProfilePageLayout pageTitle={role === 'colegio' ? 'Colegio ' + name : name}>
 
-            <UserDetails user={user}/>
+            <UserDetails user={newUser} />
 
-            <RemoveButton onClick={onOpen}>
-                Eliminar cuenta
-            </RemoveButton>
+            <Flex gap={'30px'}>
+                <Button onClick={onOpenEditModal}>
+                    Editar cuenta
+                </Button>
 
-            <CustomModal 
-                isOpen={isOpen} 
-                onClose={onClose}
-                title={'¿Estás seguro de querer eliminar la cuenta?'}    
-            >
-                <Box mb={'30px'}>
-                    <Text>
-                        Al eliminar esta cuenta dejarás de recibir avisos sobre casos de bullying en los que puedas ayudar. 
-                    </Text>
-                    <Text>
-                        Si realmente deseas eliminarla, agradeceríamos que nos hicieras saber el motivo a través del siguiente email: 
-                    </Text>
-                    <CustomLink to='mailto:actuocontraelbullying@gmail.com'>actuocontraelbullying@gmail.com</CustomLink>
-                </Box>         
-                <Flex gap={'20px'} justify={'flex-end'} mb={'20px'}>
-                    <Button onClick={onClose}>
-                        Cancelar
-                    </Button>
-                
-                    <RemoveButton onClick={removeUser}>
-                        Eliminar cuenta
-                    </RemoveButton>
-                </Flex>
-            </CustomModal>
-            
+                <RemoveButton onClick={onOpenRemoveModal}>
+                    Eliminar cuenta
+                </RemoveButton>
+            </Flex>
+
+            <EditUserModal role={role} user={user} isOpen={isOpenEditModal} onClose={onCloseEditModal} onChange={onChange} editUserFn={editUser} />
+            <RemoveUserModal isOpen={isOpenRemoveModal} onClose={onCloseRemoveModal} removeUser={removeUser} />
 
         </ProfilePageLayout>
     )

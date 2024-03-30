@@ -6,33 +6,34 @@ import RadioButtonField from '../RadioButtonField/RadioButtonField';
 import PasswordField from '../PasswordField/PasswordField';
 
 const FieldForm = ({input, ...props}) => {
+    
     switch(input.type) {
         case 'select':
             return <SelectField {...props} name={input.name}/>
 
         case 'text':
-            return <InputField {...props} name={input.name} placeholder={input.placeholder} />
+            return <InputField {...props} name={input.name} />
 
         case 'email':
-            return <InputField {...props} type={'email'} name={input.name} placeholder={input.placeholder} />
+            return <InputField {...props} type={'email'} name={input.name} />
 
         case 'phone':
-            return <InputField {...props} type={'tel'} name={input.name} placeholder={input.placeholder} />
+            return <InputField {...props} type={'tel'} name={input.name} />
 
         case 'textarea':
-            return <TextareaField {...props} name={input.name} placeholder={input.placeholder} />
+            return <TextareaField {...props} name={input.name} />
             
         case 'checkbox':
             return <CheckboxField {...props} name={input.name}/>
         
         case 'radiobutton':
-            return <RadioButtonField {...props} name={input.name} placeholder={input.placeholder} />
+            return <RadioButtonField {...props} name={input.name} />
 
         case 'password':
-            return <PasswordField {...props} name={input.name} placeholder={input.placeholder} />
+            return <PasswordField {...props} name={input.name} />
             
         default:
-            return <InputField {...props} name={input.name} placeholder={input.placeholder} />
+            return <InputField {...props} name={input.name} />
     }
 }
 
