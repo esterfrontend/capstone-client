@@ -14,6 +14,7 @@ import MyCasesPage from "../pages/MyCasesPage/MyCasesPage";
 import LoaderCasesPage from "../pages/MyCasesPage/LoaderCasesPage";
 import CaseDetailsPage from "../pages/CaseDetailsPage/CaseDetailsPage";
 import LoaderCaseDetailsPage from '../pages/CaseDetailsPage/LoaderCaseDetailsPage'
+import LoaderHomePage from '../pages/HomePage/LoaderHomePage'
 import MyPartner from "../pages/MyPartner/MyPartner";
 
 const AppRoutes = () => {
@@ -24,7 +25,8 @@ const AppRoutes = () => {
             children: [
                 {
                     path: '/',
-                    element: <HomePage />
+                    element: <HomePage />,
+                    loader: LoaderHomePage
                 },
                 {
                     path: "/inicio-sesion",

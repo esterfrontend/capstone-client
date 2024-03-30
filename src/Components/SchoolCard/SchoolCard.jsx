@@ -3,10 +3,9 @@ import { Box, Text } from "@chakra-ui/react"
 const SchoolCard = ({school}) => {
     return (
         <Box 
-            border={'2px solid'} 
-            borderRadius={'10px'}
+            border={'1px solid'} 
             borderColor={'brand.primaryLight'}
-            padding={'10px'}
+            padding={['15px', '15px', '20px', '25px']}
         >
             <Text
                 as={'h2'}
