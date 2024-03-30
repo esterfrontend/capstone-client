@@ -1,71 +1,42 @@
-import { Flex } from '@chakra-ui/react'
+import { Box, Flex } from '@chakra-ui/react'
 import Logo from '../Logo/Logo'
-import NavigationLink from '../NavigationLink/NavigationLink'
-import AuthLink from '../AuthLink/AuthLink'
-import { Link, useLocation } from 'react-router-dom'
-import { useContext } from "react"
-import { AuthContext } from "../../contexts/AuthContext"
+import { Link } from 'react-router-dom'
+import "./Navbar.css"
+import MainNavigation from '../MainNavigation/MainNavigation'
+import AuthNavigation from '../AuthNavigation/AuthNavigation'
+import MobileMenu from '../MobileMenu/MobileMenu'
 
 const Navbar = () => {
-    const { user, logout } = useContext(AuthContext)
 
-    const NAVIGATION = [
-        {
-            text: 'Yo actúo',
-            link: '/nuevo-caso'
-        },
-        // {
-        //     text: 'Cómo funciona',
-        //     link: '/'
-        // },
-        {
-            text: 'Colegios',
-            link: '/colegios'
-        },
-        {
-            text: 'Psicólogos',
-            link: '/psicologos'
-        }
-    ]
+    return (<>
+        {/* Desktop */}
+        <Box className='navbar-desktop' w={'100%'}>
+            <Flex as={"header"} className='container' w={'100%'} paddingTop={'30px'} paddingBottom={'30px'} alignItems={'center'} justifyContent={'space-between'} position={'relative'}>
+                <Link to='/'>
+                    <Logo />
+                </Link>
 
-    const location = useLocation()
+                <Flex gap={'4vw'} textAlign={'center'}>
+                    <MainNavigation 
+                        classname={'nabvar-desktop__item'}
+                    />
+                </Flex>
 
-    return (
-        <Flex as={"header"} className='container' paddingTop={'30px'} paddingBottom={'30px'} alignItems={'center'} justifyContent={'space-between'} position={'relative'}>
-            <Link to='/'>
-                <Logo />
-            </Link>
-
-            <Flex gap={'4vw'} textAlign={'center'}>
-                { NAVIGATION.map(({ link, text }) => {
-                    const isActiveLink = location.pathname === link
-                    return (
-                        <NavigationLink 
-                            to={link} 
-                            key={text} 
-                            color={isActiveLink ? "brand.primary" : "brand.black"}
-                        >
-                            {text}
-                        </NavigationLink>
-                    )
-                })} 
+                <AuthNavigation gap={'20px'} textAlign={'center'} />
             </Flex>
+        </Box>
 
-            <Flex gap={'20px'} textAlign={'center'}>
-                {user ? (
-                    <>
-                        <AuthLink to={"/mi-perfil"}>Mi perfil</AuthLink>
-                        <AuthLink onClick={logout}>Logout</AuthLink>
-                    </>
-                ) : (
-                    <>
-                        <AuthLink to={"/inicio-sesion"}>Iniciar sesión</AuthLink>
-                        <AuthLink to={"/registrarse"}>Registrarse</AuthLink>
-                    </>
-                )}
+        {/* Mobile */}
+        <Box className='navbar-mobile'>
+            <Flex as={"header"} className='container' paddingTop={'20px'} paddingBottom={'20px'} alignItems={'center'} justifyContent={'space-between'} position={'relative'}>
+                <Link to='/'>
+                    <Logo />
+                </Link>
+
+                <MobileMenu/>
             </Flex>
-        </Flex>
-    )
+        </Box>
+    </>)
 }
 
 export default Navbar
