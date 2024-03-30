@@ -51,7 +51,6 @@ const CreateCaseForm = () => {
         try {
             e.preventDefault()
             
-            console.log("create", caseData)
             await CasesService.createCase(caseData)
             setCaseData({
                 school_id: '',

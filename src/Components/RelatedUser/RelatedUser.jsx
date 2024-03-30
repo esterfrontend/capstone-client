@@ -7,7 +7,6 @@ const professionalImage = 'https://res.cloudinary.com/dsywb80za/image/upload/v17
 
 const RelatedUser = ({caseDetails, ...props}) => {
     const { user } = useContext(AuthContext)
-    console.log(caseDetails.school)
 
     return (
         <Box {...props}>
