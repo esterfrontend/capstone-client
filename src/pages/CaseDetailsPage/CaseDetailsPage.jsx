@@ -26,8 +26,7 @@ function CaseDetailsPage() {
                     caseDetails={caseDetails} 
                     w={'30%'} 
                     minWidth={'350px'} 
-                    position={'relative'} 
-                    padding={'25px'} 
+                    position={'relative'}
                     bgColor={'brand.pinkUltraLight'}
                 />
             </Flex>
