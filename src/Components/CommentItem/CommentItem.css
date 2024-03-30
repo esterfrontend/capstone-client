@@ -1,0 +1,7 @@
+.comment-item:nth-child(2n) {
+    background-color: #F1F1F1;
+}
+
+.comment-item:nth-child(2n +1) {
+    background-color: #E6EFEE;
+}

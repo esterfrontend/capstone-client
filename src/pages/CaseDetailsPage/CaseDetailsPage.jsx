@@ -6,7 +6,7 @@ import RelatedUser from "../../Components/RelatedUser/RelatedUser";
 import { useLoaderData } from 'react-router-dom'
 
 function CaseDetailsPage() {
-    const caseDetails = useLoaderData()
+    const { ocurrence, comments } = useLoaderData()
 
     return (
         <PageWrapper className="container" marginTop={'20px'}>
@@ -16,14 +16,15 @@ function CaseDetailsPage() {
             <Flex gap={'70px'} justifyContent={'space-between'}>
                 <CaseDetails
                     as='main' 
-                    caseDetails={caseDetails} 
+                    caseDetails={ocurrence} 
+                    comments={comments}
                     marginTop={'30px'} 
                     marginBottom={'60px'}
                 />
                 
                 <RelatedUser 
                     as='aside'
-                    caseDetails={caseDetails} 
+                    caseDetails={ocurrence} 
                     w={'30%'} 
                     minWidth={'350px'} 
                     position={'relative'}

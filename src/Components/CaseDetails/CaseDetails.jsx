@@ -1,15 +1,19 @@
 import { Box, Tabs, TabList, Tab, TabPanels, TabPanel, Text, Select} from "@chakra-ui/react";
 import Complaint from "../Complaint/Complaint";
 import casesService from "../../services/cases.service";
-import { useContext } from "react";
+import commentsService from "../../services/comments.service";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../contexts/AuthContext"
 import SimpleForm from "../SimpleForm/SimpleForm";
 import STATUS_VALUES from '../../const/statusValues'
 import { useToast } from "@chakra-ui/react"
+import Comments from "../Comments/Comments";
 
-const CaseDetails = ({caseDetails, ...props}) => {
+const CaseDetails = ({caseDetails, comments, ...props}) => {
     const { user } = useContext(AuthContext)
     const toast = useToast()
+    const [commentText, setCommentText] = useState(null)
+
 
     const { _id: case_id } = caseDetails
 
@@ -49,12 +53,37 @@ const CaseDetails = ({caseDetails, ...props}) => {
         
     }
 
-    const onChange = (e) => {
-
+    const onChangeComment = (e) => {
+        setCommentText(e.target.value)
     }
 
-    const onSubmit = async (e) => {
+    const onSubmitComment = async (e) => {
+        e.preventDefault()
 
+        const newComment = {
+            text: commentText,
+            case_id: case_id
+        }
+
+        try {
+            await commentsService.createComment(newComment)
+
+            toast({
+                title: "Tu comentario ha sido añadido.",
+                status: "success",
+                duration: 5000,
+                isClosable: true,
+            })
+        } catch (err) {
+            console.error(err)
+            toast({
+                title: "Ha ocurrido un error.",
+                description: "El comentario no ha podido añadirse correctamente.",
+                status: "error",
+                duration: 5000,
+                isClosable: true,
+            })
+        }
     }
     
     return (
@@ -79,11 +108,12 @@ const CaseDetails = ({caseDetails, ...props}) => {
 
             <Box w={'80%'} mb={'100px'}>
                 <Text fontSize={'20px'} fontWeight={'600'}>Añade un comentario sobre el caso</Text>
+                <Text>Anotan los pasos que se realizan en el caso para que todos los usuarios involucrados puedan revisarlo. Ten en cuenta que los comentarios no se pueden editar ni eliminar. </Text>
 
                 <SimpleForm
                     alignItems={'flex-start'}
-                    onChange={onChange}
-                    onSubmit={onSubmit}
+                    onChange={onChangeComment}
+                    onSubmit={onSubmitComment}
                     inputs={COMMENTS_INPUT}
                     buttonText={'Guardar comentario'}
                 />
@@ -100,7 +130,7 @@ const CaseDetails = ({caseDetails, ...props}) => {
                         <Complaint caseDetails={caseDetails}/>
                     </TabPanel>
                     <TabPanel border={'1px solid'} padding={'30px'} borderColor={'brand.primaryLight'}>
-                        <p>Todavía no hay ningún comentario!</p>
+                        <Comments comments={comments} />
                     </TabPanel>
                 </TabPanels>
             </Tabs>
