@@ -23,7 +23,7 @@ const LoginPage = () => {
     }
 
     return (
-        <Flex className='container' marginTop={'50px'}>
+        <Flex className='container' margin={'50px 0 80px'}>
             <Box
                 w={'50%'}
                 padding={'40px'}
