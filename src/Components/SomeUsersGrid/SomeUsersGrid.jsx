@@ -12,7 +12,7 @@ const SomeUsersGrid = ({ schools }) => {
         "repeat(4, 1fr)",
         "repeat(4, 1fr)",
       ]}
-      gap={"40px"}
+      gap={["20px", "30px", "40px", "50px"]}
     >
       {schools.map((school, index) => {
         return (
