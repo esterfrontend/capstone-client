@@ -13,7 +13,7 @@ const Navbar = () => {
         <Box className='navbar-desktop' w={'100%'}>
             <Flex as={"header"} className='container' w={'100%'} paddingTop={'30px'} paddingBottom={'30px'} alignItems={'center'} justifyContent={'space-between'} position={'relative'}>
                 <Link to='/'>
-                    <Logo />
+                    <Logo w={'160px'} />
                 </Link>
 
                 <Flex gap={'4vw'} textAlign={'center'}>
@@ -30,7 +30,7 @@ const Navbar = () => {
         <Box className='navbar-mobile'>
             <Flex as={"header"} className='container' paddingTop={'20px'} paddingBottom={'20px'} alignItems={'center'} justifyContent={'space-between'} position={'relative'}>
                 <Link to='/'>
-                    <Logo />
+                    <Logo w={'135px'}/>
                 </Link>
 
                 <MobileMenu/>

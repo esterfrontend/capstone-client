@@ -1,7 +1,9 @@
 import React from "react"
-import { Button, Box, useDisclosure, Drawer, DrawerBody, DrawerOverlay,  DrawerContent, DrawerCloseButton } from '@chakra-ui/react'
+import { Button, Box, useDisclosure, Drawer, DrawerBody, DrawerOverlay,  DrawerContent } from '@chakra-ui/react'
 import MainNavigation from '../MainNavigation/MainNavigation'
 import AuthNavigation from '../AuthNavigation/AuthNavigation'
+import HamburgerIcon from '../HamburgerIcon/HamburgerIcon'
+import CloseMenuIcon from "../CloseMenuIcon/CloseMenuIcon"
 
 
 const MobileMenu = () => {
@@ -11,7 +13,7 @@ const MobileMenu = () => {
     return (
         <Box>
             <Button ref={btnRef} onClick={onOpen} variant={'empty'}>
-                Open
+                <HamburgerIcon/>
             </Button>
             <Drawer
                 isOpen={isOpen}
@@ -20,8 +22,10 @@ const MobileMenu = () => {
                 finalFocusRef={btnRef}
             >
                 <DrawerOverlay />
-                <DrawerContent>
-                    <DrawerCloseButton />
+                <DrawerContent position={'relative'}>
+                    <Button onClick={onClose} variant={'empty'} position={'absolute'} top={'20px'} right={'30px'} width={'fit-content'}>
+                        <CloseMenuIcon />
+                    </Button>
                     <DrawerBody onClick={onClose} padding={'60px 30px'}>
                         <MainNavigation 
                             classname={'nabvar-mobile__item'}
