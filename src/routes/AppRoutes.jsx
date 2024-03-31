@@ -15,6 +15,7 @@ import MyCasesPage from "../pages/MyCasesPage/MyCasesPage";
 import CaseDetailsPage from "../pages/CaseDetailsPage/CaseDetailsPage";
 import LoaderHomePage from '../pages/HomePage/LoaderHomePage'
 import MyPartner from "../pages/MyPartner/MyPartner";
+import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
 
 const AppRoutes = () => {
     const router = createBrowserRouter([
@@ -90,7 +91,11 @@ const AppRoutes = () => {
                             <CaseDetailsPage />
                         </AuthMiddleware>
                     )
-                }
+                },
+                {
+                    path: "*",
+                    element: <NotFoundPage />,
+                },
             ]
         }
     ])
