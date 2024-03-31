@@ -3,7 +3,22 @@ import CustomLink from "../CustomLink/CustomLink"
 
 const Footer = () => {
     return (
-        <Flex as="footer" bg={'brand.pinkLight'} fontSize={'13px'} padding={'20px 50px'} justifyContent={'space-between'} gap={'30px'}>
+        <Flex 
+        className="container"
+            as="footer" 
+            bg={'brand.pinkLight'} 
+            fontSize={'13px'} 
+            paddingTop={'20px'}
+            paddingBottom={'20px'}
+            justifyContent={'space-between'} 
+            gap={'30px'}
+            flexDirection={[
+                'column',
+                'column',
+                'row',
+                'row'
+            ]}
+        >
             <Flex gap={'15px'}>
                 <CustomLink to='/'>Aviso legal</CustomLink>
                 <CustomLink to='/'>Política de privacidad</CustomLink>
