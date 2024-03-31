@@ -1,0 +1,29 @@
+.professional-selector label {
+    width: 100%;
+    display: inline-flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px;
+    border: 1px solid #bed6d3;
+}
+
+.professional-selector label:hover {
+    background-color: #bed6d3;
+}
+
+.professional-selector label:hover .chakra-radio__control{
+    background-color: #fff;
+    border: 2px solid #39645f;
+}
+
+.professional-selector label[data-checked] {
+    background-color: #bed6d3;    
+    border: 1px solid #bed6d3;
+}
+
+.professional-selector .chakra-radio__label {
+    width: 100%;
+    text-align: center;
+    margin-left: 0;
+}
+

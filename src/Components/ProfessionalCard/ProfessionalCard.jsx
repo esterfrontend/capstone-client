@@ -1,13 +1,9 @@
 import { Box, Text } from "@chakra-ui/react"
 import CustomLink from "../CustomLink/CustomLink"
 
-const ProfessionalCard = ({professional}) => {
+const ProfessionalCard = ({professional, ...props}) => {
     return (
-        <Box 
-            border={'1px solid'} 
-            borderColor={'brand.primaryLight'}
-            padding={['15px', '20px', '25px', '25px', '35px']}
-        >
+        <Box {...props}>
             <Text
                 as={'h2'}
                 fontSize={'1.1rem'}
@@ -15,10 +11,9 @@ const ProfessionalCard = ({professional}) => {
             >
                 {professional.name}
             </Text>
-            <Text as="span" fontSize={'0.9rem'} display={'inline-block'} w={'100%'}>{professional.address}</Text>
-            <Text as="span" fontSize={'0.9rem'} display={'inline-block'} w={'100%'}>{professional.postalCode}, {professional.province}</Text>
+            <Text as="span" fontSize={'0.9rem'} display={'inline-block'} w={'100%'} fontSize={'14px'}>{professional.postalCode}, {professional.province}</Text>
             
-            <CustomLink to={`mailto:${professional.email}`}>
+            <CustomLink to={`mailto:${professional.email}`} fontSize={'14px'}>
                 <Text as={"span"}>{professional.email}</Text>
             </CustomLink>
         </Box>
