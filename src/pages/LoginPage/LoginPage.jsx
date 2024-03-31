@@ -23,10 +23,10 @@ const LoginPage = () => {
     }
 
     return (
-        <Flex className='container' margin={'50px 0 80px'}>
+        <Flex className='container' margin={'50px 0 80px'} flexDirection={['column', 'column', 'row']} alignItems={'center'}>
             <Box
-                w={'50%'}
-                padding={'40px'}
+                w={['100%', '80%', '50%']}
+                padding={['20px', '30px', '40px']}
                 textAlign={'center'}
             >
                 <Heading as={'h1'} fontSize={'1.5rem'} marginBottom={'30px'}>Inicia sesión</Heading>
@@ -41,17 +41,18 @@ const LoginPage = () => {
                 />
             </Box>
             <Flex
-                w={'50%'}
+                w={['100%', '80%', '50%']}
                 padding={'40px'}
                 textAlign={'center'}
                 bgColor={'brand.pinkUltraLight'}
-                borderLeft={'2px solid'}
+                borderLeftWidth={['0', '0', '2px']}
+                borderLeftStyle={'solid'}
                 borderLeftColor={'brand.pink'}
                 direction={'column'}
                 gap={'20px'}
                 alignItems={'center'}
             >
-                <Heading as={'h2'} fontSize={'1.5rem'} marginBottom={'30px'}>Crea una cuenta</Heading>
+                <Heading as={'h2'} fontSize={'1.5rem'} marginBottom={['10px', '10px', '20px']}>Crea una cuenta</Heading>
                 <Text>Si eres un <strong>colegio</strong> o <strong>psicólogo</strong>, únete a nosotros y ayúdanos a <strong>luchar contra el bullying</strong>. Ayudar a los niños que sufren acoso está en nuestras manos.</Text>
                 <Button to='/registrarse'>Crea una cuenta</Button>
             </Flex>
