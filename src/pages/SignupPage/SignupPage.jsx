@@ -2,7 +2,7 @@ import { useState, useContext } from "react"
 import authService from "../../services/auth.service"
 import MainHeading from '../../Components/MainHeading/MainHeading';
 import TextBlock from '../../Components/TextBlock/TextBlock';
-import { Box, Flex, Grid, Text, useToast } from "@chakra-ui/react"
+import { Box, Flex, Grid, Heading, Text, useToast } from "@chakra-ui/react"
 import SignupForm from "../../Components/SignupForm/SignupForm"
 import FieldForm from "../../Components/FieldForm/FieldForm"
 import { ROLE_INPUTS } from "../../const/signupInputs"
@@ -11,11 +11,12 @@ import SubmitButton from "../../Components/SubmitButton/SubmitButton"
 import { useLoaderData } from 'react-router-dom';
 import ProfessionalSelector from '../../Components/ProfessionalSelector/ProfessionalSelector';
 import { AuthContext } from '../../contexts/AuthContext'
-
+import Loading from "../../Components/Loading/Loading"
 
 const SignupPage = () => {
     const { login } = useContext(AuthContext)
     const professionals = useLoaderData()
+    const [isLoading, setIsLoading] = useState(false)
 
     const [userData, setUserData] = useState({
         email: '',
@@ -46,6 +47,8 @@ const SignupPage = () => {
 
     const onSubmit = async (e) => {
         e.preventDefault()
+        setIsLoading(true)
+
         try {
             await authService.signup(userData)
             toast({
@@ -57,11 +60,15 @@ const SignupPage = () => {
             })
         } catch (error) {
             console.log("Error ==>", error)
+        } finally {
+            setIsLoading(false)
         }
 
         await login(userData)
     }
 
+    if (isLoading) return <Loading />
+    
     return (
         <>
             <MainHeading>
@@ -117,14 +124,14 @@ const SignupPage = () => {
                 ) : <></> }
 
                 { roleValue === 'colegio' ? (
-                    <>
-                        <h2>Elige psicólogo</h2>
+                    <Box mt={'30px'}>
+                        <Text fontSize={'18px'} textAlign={'center'} mb={'30px'} >Elige psicólogo</Text>
                         <ProfessionalSelector professionals={professionals} onChange={onChange}/>
-                    </>
+                    </Box>
                 ) : <></> }
 
                 { roleValue ? (
-                    <SubmitButton text='Enviar' type="submit"/>
+                    <SubmitButton text='Crear cuenta' type="submit"/>
                 ) : <></> }
             </Flex>
         </>

@@ -66,7 +66,10 @@ const Complaint = ({caseDetails}) => {
 
             <Box mb={'30px'}>
                 <p><strong>Informante:</strong></p>
-                <p>{caseDetails.informant.anonymous === true ? 'Anónimo' : caseDetails?.informant.name}</p>
+                {(caseDetails.informant)
+                    ? <p>{caseDetails.informant.anonymous === true ? 'Anónimo' : caseDetails?.informant.name}</p>
+                    : <></>
+                }
             </Box>
       
         </Box>

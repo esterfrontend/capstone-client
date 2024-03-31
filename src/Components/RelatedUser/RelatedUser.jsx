@@ -13,7 +13,9 @@ const RelatedUser = ({caseDetails, ...props}) => {
             <Box position={'fixed'} w={'100%'} maxW={'350px'} p={'25px'}>
                 {user.role === 'colegio' 
                 ?(
-                    <div>
+                    (!caseDetails.school)
+                    ? 'El psicólogo asociado ya no está disponible.'
+                    : <div>
                         <Flex alignItems={'center'} gap={'15px'} marginBottom={'20px'}>
                             <Image
                                 src={caseDetails.professional.avatar ? caseDetails.professional.avatar : professionalImage} 
@@ -37,25 +39,34 @@ const RelatedUser = ({caseDetails, ...props}) => {
                         <Text><strong>Nº de colegiado: </strong>{caseDetails.professional.registrationNumber}</Text>
                     </div>
                 ):(
-                    <div>
-                        <Heading fontSize={'23px'} fontWeight={'bold'} marginBottom={'20px'}>Colegio {caseDetails.school?.name}</Heading>
-                        <Text><strong>Persona de contacto: </strong>{caseDetails.school.contactPerson}</Text>
-                        <Text><strong>Teléfono: </strong>
-                            <CustomLink to='tel:{caseDetails.professional.phone}'>
-                                {caseDetails.school.phone}
-                            </CustomLink>
-                            /
-                            <CustomLink to='tel:{caseDetails.professional.phoneSecondary}'>
-                                {caseDetails.school.phoneSecondary}
-                            </CustomLink>
-                        </Text>
-                        <Text><strong>Email: </strong>
-                            <CustomLink to='tmailtoel:{caseDetails.professional.email}'>
-                                {caseDetails.school.email}
-                            </CustomLink>
-                        </Text>
-                        <Text><strong>Dirección: </strong>{caseDetails.school.address}, {caseDetails.school?.postalCode}, {caseDetails.school.province}</Text>
-                    </div>
+                    (!caseDetails.school)
+                    ? 'El colegio ya no está disponible.'
+                    : (
+                        <div>
+                            <Heading fontSize={'23px'} fontWeight={'bold'} marginBottom={'20px'}>Colegio {caseDetails.school.name}</Heading>
+                            <Text><strong>Persona de contacto: </strong>{caseDetails.school?.contactPerson}</Text>
+                            <Text><strong>Teléfono: </strong>
+                                <CustomLink to='tel:{caseDetails.professional.phone}'>
+                                    {caseDetails.school.phone}
+                                </CustomLink>
+                                { (caseDetails.professional?.phoneSecondary)
+                                    ? (<>
+                                        /
+                                    <CustomLink to='tel:{caseDetails.professional?.phoneSecondary}'>
+                                        {caseDetails?.school?.phoneSecondary}
+                                    </CustomLink>
+                                    </>
+                                    ):<></>
+                                }  
+                            </Text>
+                            <Text><strong>Email: </strong>
+                                <CustomLink to='tmailtoel:{caseDetails.professional?.email}'>
+                                    {caseDetails.school?.email}
+                                </CustomLink>
+                            </Text>
+                            <Text><strong>Dirección: </strong>{caseDetails.school.address}, {caseDetails.school.postalCode}, {caseDetails.school.province}</Text>
+                        </div>
+                    )
                 )}
             </Box>
         </Box>

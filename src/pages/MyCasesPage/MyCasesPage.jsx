@@ -1,13 +1,23 @@
 import ProfilePageLayout from "../../Components/ProfilePageLayout/ProfilePageLayout"
-import { useContext } from "react"
+import { useContext, useEffect, useState } from "react"
 import { useLoaderData } from 'react-router-dom';
 import CasesGrid from "../../Components/CasesGrid/CasesGrid"
 import { Box, Text } from "@chakra-ui/react";
 import { AuthContext } from "../../contexts/AuthContext"
+import casesService from "../../services/cases.service"
 
 const MyCasesPage = () => {
-    const cases = useLoaderData()
     const {user} = useContext(AuthContext)
+    const [cases, setCases] = useState([])
+
+    const getAllCases = async () => {
+        const allCases = await casesService.getAllCases()
+        setCases(allCases)
+    }
+    
+    useEffect(() => {
+        getAllCases()
+    }, [])
 
     return (
         <ProfilePageLayout pageTitle={'Mis casos'}>

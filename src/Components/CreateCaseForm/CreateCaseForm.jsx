@@ -1,13 +1,14 @@
 import CustomForm from '../../Components/CustomForm/CustomForm';
 import CASE_INPUTS from '../../const/caseInputs'
-import { useState } from 'react';
 import CasesService from '../../services/cases.service';
 import CreateCaseField from '../CreateCaseField/CreateCaseField';
+import { useState } from 'react';
 import { useToast } from "@chakra-ui/react"
-import { useNavigate } from "react-router-dom"
-import { useLoaderData } from 'react-router-dom';
+import { useNavigate, useLoaderData } from "react-router-dom"
+import Loading from "../Loading/Loading"
 
 const CreateCaseForm = () => {
+    const [isLoading, setIsLoading] = useState(false)
 
     const [caseData, setCaseData] = useState({
         state: 'abierto',
@@ -50,8 +51,18 @@ const CreateCaseForm = () => {
     const onSubmit = async (e) => {
         try {
             e.preventDefault()
+            setIsLoading(true)
             
             await CasesService.createCase(caseData)
+
+            toast({
+                title: "Gracias por tu colaboración.",
+                description: "El colegio y el psicólogo han recibido el aviso para que puedan solucionarlo lo antes posible.",
+                status: "success",
+                duration: 5000,
+                isClosable: true,
+            })
+
             setCaseData({
                 school_id: '',
                 victim: '',
@@ -62,17 +73,12 @@ const CreateCaseForm = () => {
                 anonymous: '',
                 informantName: '',
             })
-            toast({
-                title: "Gracias por tu colaboración.",
-                description: "El colegio y el psicólogo han recibido el aviso para que puedan solucionarlo lo antes posible.",
-                status: "success",
-                duration: 5000,
-                isClosable: true,
-            })
             navigate("/")
 
         } catch (err) {
             console.error(err)
+        } finally {
+            setIsLoading(false)
         }
     }
 
@@ -88,6 +94,8 @@ const CreateCaseForm = () => {
             data: schoolsData,
         }
     }
+
+    if (isLoading) return <Loading />
 
     return (<>
         <CustomForm onSubmit={onSubmit} buttonText="Enviar" maxW={'1000px'} margin={'0 auto'} alignItems={'center'} textAlign={'center'}>

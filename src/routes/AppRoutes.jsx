@@ -9,11 +9,10 @@ import SchoolsPage from "../pages/SchoolsPage/SchoolsPage";
 import LoaderSchoolsPage from "../pages/SchoolsPage/LoaderSchoolsPage";
 import ProfessionalsPage from "../pages/ProfessionalsPage/ProfessionalsPage";
 import LoaderProfessionalsPage from "../pages/ProfessionalsPage/LoaderProfessionalsPage";
+import LoaderSignupPage from "../pages/SignupPage/LoaderSignupPage";
 import ProfilePage from "../pages/ProfilePage/ProfilePage";
 import MyCasesPage from "../pages/MyCasesPage/MyCasesPage";
-import LoaderCasesPage from "../pages/MyCasesPage/LoaderCasesPage";
 import CaseDetailsPage from "../pages/CaseDetailsPage/CaseDetailsPage";
-import LoaderCaseDetailsPage from '../pages/CaseDetailsPage/LoaderCaseDetailsPage'
 import LoaderHomePage from '../pages/HomePage/LoaderHomePage'
 import MyPartner from "../pages/MyPartner/MyPartner";
 
@@ -35,7 +34,7 @@ const AppRoutes = () => {
                 {
                     path: "/registrarse",
                     element: <SignupPage />,
-                    loader: LoaderProfessionalsPage
+                    loader: LoaderSignupPage
                 },
                 {
                     path: "/nuevo-caso",
@@ -67,7 +66,6 @@ const AppRoutes = () => {
                             <MyCasesPage />
                         </AuthMiddleware>
                     ),
-                    loader: LoaderCasesPage
                 },
                 {
                     path: "/psicologo-asociado",
@@ -91,8 +89,7 @@ const AppRoutes = () => {
                         <AuthMiddleware>
                             <CaseDetailsPage />
                         </AuthMiddleware>
-                    ),
-                    loader: LoaderCaseDetailsPage
+                    )
                 }
             ]
         }
