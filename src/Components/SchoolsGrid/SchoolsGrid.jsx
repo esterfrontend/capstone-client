@@ -9,6 +9,7 @@ const SchoolsGrid = ({schools, ...props}) => {
                     "repeat(1, 1fr)",
                     "repeat(2, 1fr)",
                     "repeat(2, 1fr)",
+                    "repeat(2, 1fr)",
                     "repeat(3, 1fr)",
                 ]}
                 gap={["10px", "20px", "20px", "30px"]}
