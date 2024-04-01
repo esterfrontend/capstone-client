@@ -4,9 +4,7 @@ import SchoolsGrid from '../../Components/SchoolsGrid/SchoolsGrid';
 import { Box, Flex } from "@chakra-ui/react";
 import { useLoaderData } from 'react-router-dom';
 import SignUpLinkBox from '../../Components/SignUpLinkBox/SignUpLinkBox';
-
-import MyMap from '../../Components/MyMap/MyMap'
-import ReactWrapperMap from '../../Components/ReactWrapperMap/ReactWrapperMap';
+import MyMap from '../../Components/MyMap/MyMap';
 
 function SchoolsPage() {
     const schools = useLoaderData()
@@ -17,11 +15,9 @@ function SchoolsPage() {
                 <MainHeading>
                     Colegios inscritos
                 </MainHeading>
-                <Flex position={'relative'}>
-                    <Box position={'sticky'} w={'400px'}>
-                        {/* <MyMap/> */}
-                        {/* El mapa carga pero tiene altura 0 */}
-                        <ReactWrapperMap/>
+                <Flex flexDirection={["column", "column", "row"]}>
+                    <Box w={['100%', '100%', '50%', '40%']} h={['300px', '300px', 'auto']}>
+                        <MyMap/>
                     </Box>
                     <SchoolsGrid schools={schools}/>
                 </Flex>
