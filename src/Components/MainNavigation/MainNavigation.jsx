@@ -9,10 +9,6 @@ const MainNavigation = ( classname, {...props}) => {
             text: 'Yo actúo',
             link: '/nuevo-caso'
         },
-        // {
-        //     text: 'Cómo funciona',
-        //     link: '/'
-        // },
         {
             text: 'Colegios',
             link: '/colegios'
