@@ -23,7 +23,7 @@ const ProfilePage = () => {
 
     useEffect(() => {
         setNewUser(user);
-    }, [newUser]);
+    }, [user]);
 
     const onChange = (e) => {
         const { name, value } = e.target

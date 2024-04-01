@@ -14,7 +14,6 @@ const CaseDetails = ({caseDetails, comments, ...props}) => {
     const toast = useToast()
     const [commentText, setCommentText] = useState(null)
 
-
     const { _id: case_id } = caseDetails
 
     const COMMENTS_INPUT = [
