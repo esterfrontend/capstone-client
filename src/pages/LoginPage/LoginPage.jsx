@@ -23,11 +23,12 @@ const LoginPage = () => {
     }
 
     return (
-        <Flex className='container' margin={'50px 0 80px'} flexDirection={['column', 'column', 'row']} alignItems={'center'}>
+        <Flex className='container' marginTop={['20px', '30px', '50px']} marginBottom={'80px'} flexDirection={['column', 'column', 'row']} alignItems={'center'}>
             <Box
-                w={['100%', '80%', '50%']}
+                w={['100%', '100%', '80%', '50%']}
                 padding={['20px', '30px', '40px']}
                 textAlign={'center'}
+                marginBottom={['30px', '20px', '0px']}
             >
                 <Heading as={'h1'} fontSize={'1.5rem'} marginBottom={'30px'}>Inicia sesión</Heading>
                 <SimpleForm
@@ -41,8 +42,8 @@ const LoginPage = () => {
                 />
             </Box>
             <Flex
-                w={['100%', '80%', '50%']}
-                padding={'40px'}
+                w={['100%', '100%', '80%', '50%']}
+                padding={['20px', '30px', '40px']}
                 textAlign={'center'}
                 bgColor={'brand.pinkUltraLight'}
                 borderLeftWidth={['0', '0', '2px']}
