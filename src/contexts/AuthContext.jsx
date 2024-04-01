@@ -54,6 +54,7 @@ export const AuthProvider = ({ children }) => {
     const removeUser = async () => {
         try {
             const token = getToken()
+            logout()
             if (token) {
                 await userService.removeUser(token)
             }
