@@ -1,0 +1,19 @@
+.dropdown-menu__list {
+    display: none !important;
+}
+
+@media screen and (min-width: 900px){
+    .dropdown-menu:hover .dropdown-menu__list {
+        display: inline-flex !important;
+    }
+
+    .dropdown-menu__list a {
+        font-size: 14px;
+        padding: 13px 15px;
+    }
+
+    .dropdown-menu__list a:hover {
+        background-color: #FEEDE7;
+        text-decoration: none;
+    }
+}
