@@ -40,7 +40,7 @@ function CaseDetailsPage() {
 
             <GoBackLink to="/mis-casos" />
 
-            <Flex gap={'70px'} justifyContent={'space-between'}>
+            <Flex gap={['0px', '0px', '50px', '70px']} justifyContent={'space-between'} flexDirection={['column', 'column', 'row']}>
                 <CaseDetails
                     as='main' 
                     caseDetails={ocurrence} 
@@ -52,10 +52,11 @@ function CaseDetailsPage() {
                 <RelatedUser 
                     as='aside'
                     caseDetails={ocurrence} 
-                    w={'30%'} 
-                    minWidth={'350px'} 
+                    w={['100%', '100%', '30%']} 
+                    minWidth={'300px'} 
                     position={'relative'}
                     bgColor={'brand.pinkUltraLight'}
+                    mb={'40px'}
                 />
             </Flex>
         </PageWrapper>

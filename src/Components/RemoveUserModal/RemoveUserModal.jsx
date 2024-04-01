@@ -20,7 +20,7 @@ const RemoveUserModal = ({isOpen, onClose, removeUser}) => {
                 </Text>
                 <CustomLink to='mailto:actuocontraelbullying@gmail.com'>actuocontraelbullying@gmail.com</CustomLink>
             </Box>         
-            <Flex gap={'20px'} justify={'flex-end'} mb={'20px'}>
+            <Flex gap={'20px'} justify={'flex-end'} mb={'20px'} flexDirection={['column', 'row']}>
                 <Button onClick={onClose}>
                     Cancelar
                 </Button>

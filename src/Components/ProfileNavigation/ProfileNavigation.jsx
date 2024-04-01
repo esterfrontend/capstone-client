@@ -32,7 +32,7 @@ const ProfileNavigation = () => {
 
     
     return (
-        <Flex className={'profile-navigation'} direction={'column'} bgColor={'brand.pinkUltraLight'} padding={'5px 20px'} margin={'0px'} listStyleType={'none'} minW={'250px'}>
+        <Flex className={'profile-navigation'} direction={'column'} bgColor={'brand.pinkUltraLight'} padding={'5px 20px'} margin={'0px'} listStyleType={'none'} minW={'250px'} w={['100%', '100%', 'auto']}>
             { PROFILE_NAVIGATION.map(({ link, text, roleHidden }, index) => {
                 const isActiveLink = location.pathname === link
 

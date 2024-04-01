@@ -64,7 +64,7 @@ const ProfilePage = () => {
 
             <UserDetails user={newUser} />
 
-            <Flex gap={'30px'}>
+            <Flex gap={'30px'} flexDirection={['column', 'row']} alignItems={'flex-start'}>
                 <Button onClick={onOpenEditModal}>
                     Editar cuenta
                 </Button>

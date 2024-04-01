@@ -88,12 +88,9 @@ const CaseDetails = ({caseDetails, comments, ...props}) => {
     
     return (
         <Box {...props} flex={'1'}>
-            <Box w={'80%'} mb={'50px'}>
+            <Box w={['100%', '100%', '100%', '80%']} mb={'50px'}>
                 <Text fontSize={'20px'} fontWeight={'600'}>Estado</Text>
                 <Text>Modifica el estado del caso conforme se vayan realizando avances. Este estado también puede ser modificado por el {user.role === 'colegio' ? 'psicólogo' : 'colegio'} asociado.</Text>
-                { user.role === 'colegio' ? (
-                    <Text>Recuerda que debe ser el psicólogo quien marque las pautas durante todo el proceso.</Text> 
-                ) : <></>}
 
                 <Select onChange={onChangeStatus} maxW={'250px'}
                     defaultValue={caseDetails.status}
@@ -106,9 +103,9 @@ const CaseDetails = ({caseDetails, comments, ...props}) => {
                 </Select>
             </Box>
 
-            <Box w={'80%'} mb={'100px'}>
+            <Box w={['100%', '100%', '100%', '80%']} mb={'100px'}>
                 <Text fontSize={'20px'} fontWeight={'600'}>Añade un comentario sobre el caso</Text>
-                <Text>Anotan los pasos que se realizan en el caso para que todos los usuarios involucrados puedan revisarlo. Ten en cuenta que los comentarios no se pueden editar ni eliminar. </Text>
+                <Text>Ten en cuenta que los comentarios no se pueden editar ni eliminar. </Text>
 
                 <SimpleForm
                     alignItems={'flex-start'}
@@ -119,17 +116,17 @@ const CaseDetails = ({caseDetails, comments, ...props}) => {
                 />
             </Box>
 
-            <Tabs variant='unstyled'>
+            <Tabs variant='enclosed'>
                 <TabList>
-                    <Tab padding={'10px 30px'} _selected={{ fontWeight: '600', bg: 'brand.primaryLight' }}>Denuncia</Tab>
-                    <Tab padding={'10px 30px'} _selected={{ fontWeight: '600', bg: 'brand.primaryLight' }}>Comentarios</Tab>
+                    <Tab>Denuncia</Tab>
+                    <Tab>Comentarios</Tab>
                 </TabList>
 
                 <TabPanels>
-                    <TabPanel border={'1px solid'} padding={'30px'} borderColor={'brand.primaryLight'}>
+                    <TabPanel>
                         <Complaint caseDetails={caseDetails}/>
                     </TabPanel>
-                    <TabPanel border={'1px solid'} padding={'30px'} borderColor={'brand.primaryLight'}>
+                    <TabPanel>
                         <Comments comments={comments} />
                     </TabPanel>
                 </TabPanels>
