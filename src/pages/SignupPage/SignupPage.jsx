@@ -170,8 +170,7 @@ const SignupPage = () => {
 
 
                 { roleValue === 'colegio' ? (<>
-                    {/* GOOGLE MAPS */}
-                    <Button onClick={handleGeocodeAddress}>Guardar la dirección en google maps</Button>
+                    <Button onClick={handleGeocodeAddress}>Ver en el mapa</Button>
                     { errorDirection &&
                         <Text>No se encuentra la dirección proporcionada</Text>
                     }
@@ -181,7 +180,6 @@ const SignupPage = () => {
                         </Box>
                     }
 
-                    {/* PROFESSIONALS */}
                     <Box mt={'30px'}>
                         <Text fontSize={'18px'} textAlign={'center'} mb={'30px'} >Elige psicólogo</Text>
                         <ProfessionalSelector professionals={professionals} onChange={onChange}/>
