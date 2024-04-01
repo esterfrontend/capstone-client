@@ -8,6 +8,8 @@ const MyMap = () => {
     const [open, setOpen] = useState(false);
     const [schoolSelected, setSchoolSelected] = useState(null);
     const [userPosition, setUserPosition] = useState(null);
+    const [isGeolocated, setIsGeolocated] = useState(false);
+    
 
     const getUserPosition = () => {
         navigator.geolocation.getCurrentPosition(
@@ -16,6 +18,7 @@ const MyMap = () => {
                     lat: position.coords.latitude,
                     lng: position.coords.longitude
                 });
+                setIsGeolocated(true)
             },
             (error) => {
                 console.error('Error getting user location:', error);
@@ -25,9 +28,7 @@ const MyMap = () => {
 
     useEffect(() => {
         getUserPosition()
-    }, []);
-
-    console.log('POSITION ==> ', userPosition)
+    }, [isGeolocated]);
 
     const MARKERS = [
         {
@@ -44,7 +45,8 @@ const MyMap = () => {
         }
     ]
 
-    return (
+    return isGeolocated === true 
+        ? (
         <APIProvider apiKey={apiKey}>
             <Map defaultCenter={userPosition || { lat: 41.65037928326351, lng: -0.8925806264993303 }} defaultZoom={14} mapId={mapId}>
                 {
@@ -64,7 +66,7 @@ const MyMap = () => {
                 }
             </Map>
         </APIProvider>
-    );
+    ) : (<>Cargando Google Maps...</>)
 }
 
 export default MyMap
