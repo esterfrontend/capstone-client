@@ -10,3 +10,7 @@
         padding-right: 50px;
     }
 }
+
+*{
+    word-break: break-word;
+}

@@ -11,7 +11,7 @@ function ProfessionalsPage() {
 
     return (
         <PageWrapper>
-            <Box as="section">
+            <Box as="section" mb={'60px'}>
                 <MainHeading>
                     Psicólogos inscritos
                 </MainHeading>

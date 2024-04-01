@@ -6,13 +6,13 @@ const ProfessionalsGrid = ({ professionals }) => {
         <Grid className="container"
             marginTop={'50px'}
             templateColumns={[
+                "repeat(1, 1fr)",
+                "repeat(1, 1fr)",
                 "repeat(2, 1fr)",
-                "repeat(2, 1fr)",
-                "repeat(3, 1fr)",
                 "repeat(3, 1fr)",
                 "repeat(4, 1fr)",
             ]}
-            gap={"40px"}
+            gap={["15px", "20px", "30px", "40px"]}
         >
             {professionals.map((professional, index) => {
                 return (
