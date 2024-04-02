@@ -1,8 +1,10 @@
-import { Box, Text } from "@chakra-ui/react"
+import { Box, Heading, Text } from "@chakra-ui/react"
 import CustomLink from "../../Components/CustomLink/CustomLink"
 
 const UserDetails = ({user}) => {
     const {
+        name,
+        role,
         email,
         registrationNumber,
         address,
@@ -14,16 +16,21 @@ const UserDetails = ({user}) => {
     } = user
 
     return (<>
-        {(registrationNumber)
-            ? (
-                <Box m={'30px 0'}>
-                    
-                    <Text fontWeight={'600'}>
-                        Nº de colegiado:
-                    </Text>
-                    <Text>{registrationNumber}</Text>
-                </Box>
-            ) : <></>
+
+        {(role === 'colegio') &&
+            <Box m={'30px 0'}>
+                <Heading as={'h2'} fontSize={['22px', '22px', '24px']}>{name}</Heading>
+            </Box>
+        }
+
+        {(registrationNumber) &&
+            <Box m={'30px 0'}>
+                
+                <Text fontWeight={'600'}>
+                    Nº de colegiado:
+                </Text>
+                <Text>{registrationNumber}</Text>
+            </Box>
         }
 
         <Box m={'30px 0'}>
