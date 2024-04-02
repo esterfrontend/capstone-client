@@ -1,6 +1,6 @@
 import { Input } from "@chakra-ui/react"
 
-const InputForm = ({onChange, name, placeholder}) => {
+const InputField = ({onChange, name, placeholder}) => {
     return (
         <Input onChange={onChange} maxW={'300px'} w={'100%'} margin={'0 auto'} 
             name={name} 
@@ -9,4 +9,4 @@ const InputForm = ({onChange, name, placeholder}) => {
     )
 }
 
-export default InputForm
+export default InputField
