@@ -10,8 +10,6 @@ import './SchoolsPage.css'
 function SchoolsPage() {
     const schools = useLoaderData()
 
-    console.log(schools)
-
     return (
         <PageWrapper>
             <Box as="section">
