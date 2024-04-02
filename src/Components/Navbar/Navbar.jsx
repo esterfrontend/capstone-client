@@ -9,8 +9,7 @@ import MobileMenu from '../MobileMenu/MobileMenu'
 const Navbar = () => {
 
     return (<>
-        {/* Desktop */}
-        <Box className='navbar-desktop' w={'100%'}>
+        <Box className='navbar-desktop' w={'100%'} zIndex={'999'}>
             <Flex as={"header"} className='container' w={'100%'} paddingTop={'30px'} paddingBottom={'30px'} alignItems={'center'} justifyContent={'space-between'} position={'relative'}>
                 <Link to='/'>
                     <Logo w={'160px'} />
@@ -26,7 +25,6 @@ const Navbar = () => {
             </Flex>
         </Box>
 
-        {/* Mobile */}
         <Box className='navbar-mobile'>
             <Flex as={"header"} className='container' paddingTop={'20px'} paddingBottom={'20px'} alignItems={'center'} justifyContent={'space-between'} position={'relative'}>
                 <Link to='/'>
