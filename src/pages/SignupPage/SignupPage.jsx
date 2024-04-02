@@ -67,7 +67,10 @@ const SignupPage = () => {
     const onSubmit = async (e) => {
         e.preventDefault()
         setIsLoading(true)
-        handleGeocodeAddress()
+
+        if(userData.role === 'colegio') {
+            handleGeocodeAddress()
+        }
 
         try {
             await authService.signup(userData)
