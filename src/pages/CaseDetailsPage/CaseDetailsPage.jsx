@@ -32,7 +32,7 @@ function CaseDetailsPage() {
 
     useEffect(() => {
         getOcurrenceData()
-    }, [comments])
+    }, [])
 
     return (
         <PageWrapper className="container" marginTop={'20px'}>
