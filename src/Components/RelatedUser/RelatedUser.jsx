@@ -10,7 +10,7 @@ const RelatedUser = ({caseDetails, ...props}) => {
 
     return (
         <Box {...props}>
-            <Box position={['inherit','inherit', 'fixed']} w={'100%'} maxW={['100%', '100%', '350px']} p={'25px'}>
+            <Box w={'100%'} maxW={'100%'} p={'25px'}>
                 {user.role === 'colegio' 
                 ?(
                     (!caseDetails.school)
