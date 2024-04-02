@@ -1,4 +1,3 @@
-
 const colors = {
     red: {
         500: '#F25942'
