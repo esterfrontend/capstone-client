@@ -2,7 +2,7 @@ import ProfilePageLayout from "../../Components/ProfilePageLayout/ProfilePageLay
 import { useContext } from "react"
 import { AuthContext } from "../../contexts/AuthContext"
 import UserDetails from "../../Components/UserDetails/UserDetails"
-import { Box } from "@chakra-ui/react";
+import { Box, Text } from "@chakra-ui/react";
 import './MyPartner.css'
 
 const MyPartner = () => {
@@ -15,15 +15,17 @@ const MyPartner = () => {
             <Box>
             { user.role === 'colegio'
                 ? <UserDetails user={user.professional}/>
-                : (
-                    user.schools.map((school, index) => {
-                        return (
+                : user.schools.length === 0
+                    ? <>
+                        <Text>Todavía no tienes ningún colegio asociado.</Text>
+                    </>
+                    : (
+                        user.schools.map((school, index) => {
                             <Box className='partner-school' key={index}>
                                 <UserDetails user={school}/>
                             </Box>
-                        )
-                    })
-                )
+                        })
+                    )
             }
             </Box>
         </ProfilePageLayout>
